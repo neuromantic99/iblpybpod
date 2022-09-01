@@ -1,0 +1,7 @@
+confapp
+logging-bootstrap
+# opencv-python
+opencv-python==4.3.0.36  # locking it down may just be necessary on dev box
+PyForms
+PyQtWebEngine
+safe-and-collaborative-architecture
