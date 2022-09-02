@@ -1,12 +1,9 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 import logging
 
-from pybpodgui_api.models.setup import Setup
+from PyQt5.QtCore import QTimer
 
+from pybpodgui_api.models.setup import Setup
 from pybpodgui_plugin.models.board.board_window import BoardWindow
-from AnyQt.QtCore import QTimer
 
 logger = logging.getLogger(__name__)
 

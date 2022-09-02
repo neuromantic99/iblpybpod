@@ -1,13 +1,9 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 """ pybpod gui API
 
 """
 
 import sys
 import os
-from confapp import conf
 
 __version__ = "1.8.2"
 __author__ = "Ricardo Jorge Vieira Ribeiro"
@@ -20,12 +16,9 @@ __status__ = "Development"
 # Load settings using pyforms library
 # Include user settings in case the file exists
 
-conf += 'pybpodgui_api.settings'
-
 # try:
 # 	import pycontrolapi.user_settings_api as user_settings
 #
-# 	conf += user_settings
 # except:
 # 	pass
 

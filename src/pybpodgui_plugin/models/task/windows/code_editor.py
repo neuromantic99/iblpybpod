@@ -1,17 +1,14 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 import logging
-import shutil
-import pyforms
 import os
-from pyforms_gui.organizers import vsplitter
-from pyforms.basewidget import BaseWidget
-from pyforms.controls import ControlTreeView
-from pyforms.controls import ControlCodeEditor
+import shutil
 
-from AnyQt.QtCore import Qt
-from AnyQt.QtWidgets import QFileSystemModel
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QFileSystemModel
+
+from pyforms_gui.basewidget import BaseWidget
+from pyforms_gui.controls.control_codeeditor import ControlCodeEditor
+from pyforms_gui.controls.control_treeview import ControlTreeView
+from pyforms_gui.organizers import vsplitter
 
 logger = logging.getLogger(__name__)
 
@@ -259,4 +256,5 @@ class CodeEditor(BaseWidget):
 
 # Execute the application
 if __name__ == "__main__":
-    pyforms.start_app(CodeEditor)
+    from pyforms_gui.appmanager import start_app
+    start_app(CodeEditor)

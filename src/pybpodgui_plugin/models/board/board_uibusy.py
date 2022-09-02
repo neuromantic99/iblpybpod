@@ -1,11 +1,9 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 import logging
-from confapp import conf
 
-from AnyQt.QtGui import QIcon
+from PyQt5.QtGui import QIcon
 
+import pybpodgui_plugin.resources as pybpod_conf
+import pyforms_generic_editor.resources as pyforms_conf
 from pybpodgui_plugin.models.board.board_dockwindow import BoardDockWindow
 
 logger = logging.getLogger(__name__)
@@ -29,9 +27,9 @@ class BoardUIBusy(BoardDockWindow):
         logger.debug('Board [{0}] status: {1}'.format(self.name, self.status))
 
         if self.status > BoardUIBusy.STATUS_READY:
-            self.node.setIcon(0, QIcon(conf.PLAY_SMALL_ICON))
+            self.node.setIcon(0, QIcon(pyforms_conf.PLAY_SMALL_ICON))
         else:
-            self.node.setIcon(0, QIcon(conf.BOARD_SMALL_ICON))
+            self.node.setIcon(0, QIcon(pybpod_conf.BOARD_SMALL_ICON))
 
     ##########################################################################
     ####### PROPERTIES #######################################################

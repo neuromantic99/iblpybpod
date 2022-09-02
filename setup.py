@@ -56,8 +56,6 @@ setup(
     packages=find_packages(where="src", exclude=['scratch', 'tests']),  # same as name
     include_package_data=True,
     install_requires=require,
-    # entry_points={"console_scripts": ["start-pybpod=base.pybpodgui_plugin.__main__:start"]},
     entry_points={"console_scripts": ["start-pybpod=pybpodgui_plugin.__main__:start"]},
-    # entry_points={"console_scripts": ["start-pybpod=base.pybpod-gui-plugin.test:main"]},
     scripts=[]
 )

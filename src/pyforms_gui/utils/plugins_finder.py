@@ -1,9 +1,6 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
-import re
 import logging
-from confapp import conf
+import re
+import pyforms_gui.settings as conf
 
 logger = logging.getLogger(__name__)
 

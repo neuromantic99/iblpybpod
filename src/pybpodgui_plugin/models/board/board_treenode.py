@@ -1,13 +1,10 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 import logging
 
-from confapp import conf
+from PyQt5 import QtCore
+from PyQt5.QtGui import QIcon
 
-from AnyQt.QtGui import QIcon
-from AnyQt import QtCore
-
+import pybpodgui_plugin.resources as pybpod_conf
+import pyforms_generic_editor.resources as pyforms_conf
 from pybpodgui_plugin.models.board.board_com import BoardCom
 
 logger = logging.getLogger(__name__)
@@ -52,13 +49,13 @@ class BoardTreeNode(BoardCom):
         :return: new created node
         :return type: QTreeWidgetItem
         """
-        self.node = tree.create_child(self.name, self.project.boards_node, icon=QIcon(conf.BOARD_SMALL_ICON))
+        self.node = tree.create_child(self.name, self.project.boards_node, icon=QIcon(pybpod_conf.BOARD_SMALL_ICON))
         self.node.key_pressed_event = self.node_key_pressed_event
         self.node.double_clicked_event = self.node_double_clicked_event
         self.node.window = self
         self.node.setExpanded(True)
 
-        tree.add_popup_menu_option('Remove', self.remove, item=self.node, icon=QIcon(conf.REMOVE_SMALL_ICON))
+        tree.add_popup_menu_option('Remove', self.remove, item=self.node, icon=QIcon(pyforms_conf.REMOVE_SMALL_ICON))
         return self.node
 
     def remove(self):

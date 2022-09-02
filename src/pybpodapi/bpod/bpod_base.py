@@ -1,36 +1,29 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 import logging
 import math
 import socket
 import sys
-
-from confapp import conf as settings
 from datetime import datetime as datetime_now
-from pybpodapi.bpod.hardware.hardware import Hardware
-from pybpodapi.bpod.hardware.channels import ChannelType
+
+import pybpodapi.settings as conf
 from pybpodapi.bpod.hardware.channels import ChannelName
+from pybpodapi.bpod.hardware.channels import ChannelType
 from pybpodapi.bpod.hardware.events import EventName
+from pybpodapi.bpod.hardware.hardware import Hardware
 from pybpodapi.bpod.hardware.output_channels import OutputChannel
-
 from pybpodapi.bpod_modules.bpod_modules import BpodModules
-from pybpodapi.exceptions.bpod_error import BpodErrorException
-
 from pybpodapi.com.messaging.end_trial import EndTrial
-from pybpodapi.com.messaging.trial import Trial
 from pybpodapi.com.messaging.event_occurrence import EventOccurrence
 from pybpodapi.com.messaging.event_resume import EventResume
-from pybpodapi.com.messaging.softcode_occurrence import SoftcodeOccurrence
 from pybpodapi.com.messaging.session_info import SessionInfo
-from pybpodapi.com.messaging.warning import WarningMessage
-from pybpodapi.com.messaging.value import ValueMessage
+from pybpodapi.com.messaging.softcode_occurrence import SoftcodeOccurrence
 from pybpodapi.com.messaging.state_transition import StateTransition
-
+from pybpodapi.com.messaging.trial import Trial
+from pybpodapi.com.messaging.value import ValueMessage
+from pybpodapi.com.messaging.warning import WarningMessage
+from pybpodapi.exceptions.bpod_error import BpodErrorException
 from pybpodapi.session import Session
-
-from .non_blockingstreamreader import NonBlockingStreamReader
 from .non_blockingsocketreceive import NonBlockingSocketReceive
+from .non_blockingstreamreader import NonBlockingStreamReader
 
 logger = logging.getLogger(__name__)
 
@@ -62,11 +55,11 @@ class BpodBase(object):
     def __init__(self, serial_port=None, sync_channel=None, sync_mode=None, net_port=None):
         self._session = self.create_session()
 
-        self.serial_port = serial_port if serial_port is not None else settings.PYBPOD_SERIAL_PORT
-        self.baudrate = settings.PYBPOD_BAUDRATE
-        self.sync_channel = sync_channel if sync_channel is not None else settings.PYBPOD_SYNC_CHANNEL
-        self.sync_mode = sync_mode if sync_mode is not None else settings.PYBPOD_SYNC_MODE
-        self.net_port = net_port if net_port is not None else settings.PYBPOD_NET_PORT
+        self.serial_port = serial_port if serial_port is not None else conf.PYBPOD_SERIAL_PORT
+        self.baudrate = conf.PYBPOD_BAUDRATE
+        self.sync_channel = sync_channel if sync_channel is not None else conf.PYBPOD_SYNC_CHANNEL
+        self.sync_mode = sync_mode if sync_mode is not None else conf.PYBPOD_SYNC_MODE
+        self.net_port = net_port if net_port is not None else conf.PYBPOD_NET_PORT
         self._hardware = Hardware()    # type: Hardware
         self.bpod_modules = None          # type: BpodModules
         self.bpod_start_timestamp = None
@@ -78,23 +71,23 @@ class BpodBase(object):
         self._hardware.sync_mode = self.sync_mode    # 0 = flip logic every trial, 1 = every state
 
         self.session += SessionInfo(self.session.INFO_SERIAL_PORT, self.serial_port)
-        self.session += SessionInfo(self.session.INFO_PROTOCOL_NAME, settings.PYBPOD_PROTOCOL)
-        self.session += SessionInfo(self.session.INFO_CREATOR_NAME, settings.PYBPOD_CREATOR)
-        self.session += SessionInfo(self.session.INFO_PROJECT_NAME, settings.PYBPOD_PROJECT)
-        self.session += SessionInfo(self.session.INFO_EXPERIMENT_NAME, settings.PYBPOD_EXPERIMENT)
-        self.session += SessionInfo(self.session.INFO_BOARD_NAME, settings.PYBPOD_BOARD)
-        self.session += SessionInfo(self.session.INFO_SETUP_NAME, settings.PYBPOD_SETUP)
-        self.session += SessionInfo(self.session.INFO_BPODGUI_VERSION, settings.PYBPOD_BPODGUI_VERSION)
+        self.session += SessionInfo(self.session.INFO_PROTOCOL_NAME, conf.PYBPOD_PROTOCOL)
+        self.session += SessionInfo(self.session.INFO_CREATOR_NAME, conf.PYBPOD_CREATOR)
+        self.session += SessionInfo(self.session.INFO_PROJECT_NAME, conf.PYBPOD_PROJECT)
+        self.session += SessionInfo(self.session.INFO_EXPERIMENT_NAME, conf.PYBPOD_EXPERIMENT)
+        self.session += SessionInfo(self.session.INFO_BOARD_NAME, conf.PYBPOD_BOARD)
+        self.session += SessionInfo(self.session.INFO_SETUP_NAME, conf.PYBPOD_SETUP)
+        self.session += SessionInfo(self.session.INFO_BPODGUI_VERSION, conf.PYBPOD_BPODGUI_VERSION)
 
         if self.net_port:
             self.session += SessionInfo(self.session.INFO_NET_PORT, self.net_port)
 
-        for subject_name in settings.PYBPOD_SUBJECTS:
+        for subject_name in conf.PYBPOD_SUBJECTS:
             self.session += SessionInfo(self.session.INFO_SUBJECT_NAME, subject_name)
 
-        if hasattr(settings, 'PYBPOD_VARSNAMES'):
-            for varname in settings.PYBPOD_VARSNAMES:
-                self.session += ValueMessage(varname, getattr(settings, varname))
+        if hasattr(conf, 'PYBPOD_VARSNAMES'):
+            for varname in conf.PYBPOD_VARSNAMES:
+                self.session += ValueMessage(varname, getattr(conf, varname))
 
     #########################################
     ############ PUBLIC METHODS #############
@@ -141,10 +134,10 @@ class BpodBase(object):
         #########################################################
         firmware_version, machine_type = self._bpodcom_firmware_version()
 
-        if firmware_version < int(settings.TARGET_BPOD_FIRMWARE_VERSION):
+        if firmware_version < int(conf.TARGET_BPOD_FIRMWARE_VERSION):
             raise BpodErrorException('Error: Old firmware detected. Please update Bpod 0.7+ firmware and try again.')
 
-        if firmware_version > int(settings.TARGET_BPOD_FIRMWARE_VERSION):
+        if firmware_version > int(conf.TARGET_BPOD_FIRMWARE_VERSION):
             raise BpodErrorException('Error: Future firmware detected. Please update the Bpod python software.')
 
         self._hardware.firmware_version = firmware_version
@@ -173,7 +166,7 @@ class BpodBase(object):
             self.socketin = None
 
         # initialise the thread that will handle the stdin commands
-        self.stdin = NonBlockingStreamReader(sys.stdin) if settings.PYBPOD_API_ACCEPT_STDIN else None
+        self.stdin = NonBlockingStreamReader(sys.stdin) if conf.PYBPOD_API_ACCEPT_STDIN else None
         #####################################################
 
         return self
@@ -184,9 +177,9 @@ class BpodBase(object):
         """
         self.session += SessionInfo(self.session.INFO_SESSION_ENDED, datetime_now.now())
 
-        if hasattr(settings, 'PYBPOD_VARSNAMES'):
-            for varname in settings.PYBPOD_VARSNAMES:
-                self.session += ValueMessage(varname, getattr(settings, varname))
+        if hasattr(conf, 'PYBPOD_VARSNAMES'):
+            for varname in conf.PYBPOD_VARSNAMES:
+                self.session += ValueMessage(varname, getattr(conf, varname))
 
         self._bpodcom_disconnect()
 

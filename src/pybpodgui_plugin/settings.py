@@ -1,11 +1,6 @@
-# # !/usr/bin/python3
-# # -*- coding: utf-8 -*-
-
 import logging, os
 
 SETTINGS_PRIORITY = 100
-
-
 
 # THESE SETTINGS ARE NEEDED FOR PYSETTINGS
 APP_LOG_FILENAME = 'app.log'

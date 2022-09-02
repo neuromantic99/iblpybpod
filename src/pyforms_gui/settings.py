@@ -1,29 +1,30 @@
-# !/usr/bin/python
-# -*- coding: utf-8 -*-
-
 import os
-from AnyQt.QtGui import QIcon, QPixmap
-from AnyQt.QtWidgets import QStyle, qApp, QFileDialog, QColorDialog
+import sys
+
+from PyQt5.QtGui import QIcon, QPixmap
+from PyQt5.QtWidgets import QStyle, QColorDialog, QApplication
+
 
 def path(filename):
-	"""	
-	:param filename: 
-	:return: 
-	"""
-	return os.path.join(os.path.dirname(__file__), filename)
+    """
+    :param filename:
+    :return:
+    """
+    return os.path.join(os.path.dirname(__file__), filename)
 
 
+STYLE_APP = QApplication(sys.argv)
 PYFORMS_ICON_VIDEOPLAYER_PAUSE_PLAY = QIcon()
-PYFORMS_ICON_VIDEOPLAYER_PAUSE_PLAY.addPixmap(qApp.style().standardPixmap(QStyle.SP_MediaPlay), mode=QIcon.Normal,
+PYFORMS_ICON_VIDEOPLAYER_PAUSE_PLAY.addPixmap(STYLE_APP.style().standardPixmap(QStyle.SP_MediaPlay),mode=QIcon.Normal,
                                               state=QIcon.Off)
-PYFORMS_ICON_VIDEOPLAYER_PAUSE_PLAY.addPixmap(qApp.style().standardPixmap(QStyle.SP_MediaPause), mode=QIcon.Normal,
+PYFORMS_ICON_VIDEOPLAYER_PAUSE_PLAY.addPixmap(STYLE_APP.style().standardPixmap(QStyle.SP_MediaPause), mode=QIcon.Normal,
                                               state=QIcon.On)
 
 PYFORMS_ICON_VIDEOPLAYER_DETACH = QIcon()
-PYFORMS_ICON_VIDEOPLAYER_DETACH.addPixmap(qApp.style().standardPixmap(QStyle.SP_TitleBarMaxButton), mode=QIcon.Normal )
+PYFORMS_ICON_VIDEOPLAYER_DETACH.addPixmap(STYLE_APP.style().standardPixmap(QStyle.SP_TitleBarMaxButton), mode=QIcon.Normal )
 
-PYFORMS_ICON_CODEEDITOR_SAVE = QIcon(qApp.style().standardPixmap(QStyle.SP_DialogSaveButton))
-PYFORMS_ICON_CODEEDITOR_DISCARD = QIcon(qApp.style().standardPixmap(QStyle.SP_DialogDiscardButton))
+PYFORMS_ICON_CODEEDITOR_SAVE = QIcon(STYLE_APP.style().standardPixmap(QStyle.SP_DialogSaveButton))
+PYFORMS_ICON_CODEEDITOR_DISCARD = QIcon(STYLE_APP.style().standardPixmap(QStyle.SP_DialogDiscardButton))
 
 PYFORMS_PIXMAP_EVENTTIMELINE_ZOOM_IN = QPixmap(path(os.path.join("Controls", "uipics", "zoom_in.png")))
 PYFORMS_PIXMAP_EVENTTIMELINE_ZOOM_OUT = QPixmap(path(os.path.join("Controls", "uipics", "zoom_in.png")))

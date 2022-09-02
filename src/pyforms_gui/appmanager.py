@@ -1,9 +1,9 @@
 from pyforms_gui.controls.control_dockwidget import ControlDockWidget
-from AnyQt.QtWidgets import QMainWindow, QDockWidget, QAction, QApplication, QToolBar
-from AnyQt import QtCore, _api
-from AnyQt.QtGui import QIcon
+from PyQt5.QtWidgets import QMainWindow, QDockWidget, QAction, QApplication, QToolBar
+from PyQt5 import QtCore
+from PyQt5.QtGui import QIcon
 
-from confapp import conf
+import pyforms_gui.settings as conf
 import sys, os, platform, logging
 
 logger = logging.getLogger(__name__)
@@ -22,10 +22,10 @@ class StandAloneContainer(QMainWindow):
 
         w.init_form()
 
-        if _api.USED_API == _api.QT_API_PYQT5:
-            self.layout().setContentsMargins(conf.PYFORMS_MAINWINDOW_MARGIN,conf.PYFORMS_MAINWINDOW_MARGIN,conf.PYFORMS_MAINWINDOW_MARGIN,conf.PYFORMS_MAINWINDOW_MARGIN)
-        elif _api.USED_API == _api.QT_API_PYQT4:
-            self.layout().setMargin(conf.PYFORMS_MAINWINDOW_MARGIN)
+        self.layout().setContentsMargins(conf.PYFORMS_MAINWINDOW_MARGIN,
+                                         conf.PYFORMS_MAINWINDOW_MARGIN,
+                                         conf.PYFORMS_MAINWINDOW_MARGIN,
+                                         conf.PYFORMS_MAINWINDOW_MARGIN)
 
         self.setCentralWidget(w)
         self.setWindowTitle(w.title)
@@ -69,13 +69,15 @@ class StandAloneContainer(QMainWindow):
                     dock.setFeatures(
                         QDockWidget.DockWidgetFloatable | QDockWidget.DockWidgetClosable | QDockWidget.DockWidgetMovable)
                     dock.setObjectName(name)
-                        
-                    if _api.USED_API == _api.QT_API_PYQT5:
-                        dock.setContentsMargins(0,0,0,0)
-                        widget.form.layout().setContentsMargins(widget.margin,widget.margin,widget.margin,widget.margin)
-                    elif _api.USED_API == _api.QT_API_PYQT4:
-                        dock.setMargin(0)
-                        widget.form.layout().setMargin(widget.margin)
+
+                    dock.setContentsMargins(0, 0, 0, 0)
+                    widget.form.layout().setContentsMargins(widget.margin, widget.margin, widget.margin, widget.margin)
+                    # if _api.USED_API == _api.QT_API_PYQT5:
+                    #     dock.setContentsMargins(0,0,0,0)
+                    #     widget.form.layout().setContentsMargins(widget.margin,widget.margin,widget.margin,widget.margin)
+                    # elif _api.USED_API == _api.QT_API_PYQT4:
+                    #     dock.setMargin(0)
+                    #     widget.form.layout().setMargin(widget.margin)
 
                     # print dock.objectName(),1
                     #widget.parent = self
@@ -90,11 +92,12 @@ class StandAloneContainer(QMainWindow):
                 dock.setFeatures(
                     QDockWidget.DockWidgetFloatable | QDockWidget.DockWidgetClosable | QDockWidget.DockWidgetMovable)
                 # dock.setAllowedAreas(QtCore.Qt.LeftDockWidgetArea | QtCore.Qt.RightDockWidgetArea)
-                
-                if _api.USED_API == _api.QT_API_PYQT5:
-                    widget.form.layout().setContentsMargins(widget.margin,widget.margin,widget.margin,widget.margin)
-                elif _api.USED_API == _api.QT_API_PYQT5:
-                    widget.form.layout().setMargin(widget.margin)
+
+                widget.form.layout().setContentsMargins(widget.margin, widget.margin, widget.margin, widget.margin)
+                # if _api.USED_API == _api.QT_API_PYQT5:
+                #     widget.form.layout().setContentsMargins(widget.margin,widget.margin,widget.margin,widget.margin)
+                # elif _api.USED_API == _api.QT_API_PYQT5:
+                #     widget.form.layout().setMargin(widget.margin)
 
                 #widget.parent = self
 
@@ -195,19 +198,20 @@ def execute_test_file(myapp):
 
 
 def start_app(ClassObject, geometry=None, stylesheet=None, user_settings=None, parent_win=None):
-    from confapp import conf
+    # from confapp import conf
+    from pyforms_gui import settings as settingpy_conf
 
     if parent_win is None:
         app = QApplication(sys.argv)
 
-    conf += 'pyforms_gui.settings'
-    if user_settings:
-        conf += user_settings
+    # conf += 'pyforms_gui.settings'
+    # if user_settings:
+    #     conf += user_settings
 
     mainwindow = StandAloneContainer(ClassObject)
     
-    if hasattr( conf, 'PYFORMS_MAIN_WINDOW_ICON_PATH'):
-        mainwindow.setWindowIcon(QIcon(conf.PYFORMS_MAIN_WINDOW_ICON_PATH))
+    # if hasattr( conf, 'PYFORMS_MAIN_WINDOW_ICON_PATH'):
+    #     mainwindow.setWindowIcon(QIcon(conf.PYFORMS_MAIN_WINDOW_ICON_PATH))
 
     myapp = mainwindow.centralWidget()
 
@@ -217,14 +221,14 @@ def start_app(ClassObject, geometry=None, stylesheet=None, user_settings=None, p
     else:
         mainwindow.showMaximized()
 
-    if conf.PYFORMS_QUALITY_TESTS_PATH is not None:
+    if settingpy_conf.PYFORMS_QUALITY_TESTS_PATH is not None:
         import argparse
         parser = argparse.ArgumentParser()
         parser.add_argument("--test", help="File with the tests script")
         args = parser.parse_args()
 
         if args.test:
-            TEST_PATH = os.path.join(conf.PYFORMS_QUALITY_TESTS_PATH, args.test)
+            TEST_PATH = os.path.join(settingpy_conf.PYFORMS_QUALITY_TESTS_PATH, args.test)
             TEST_FILE_PATH = os.path.join(TEST_PATH, args.test + '.py')
             DATA_PATH = os.path.join(TEST_PATH, 'data', sys.platform)
             INPUT_DATA_PATH = os.path.join(DATA_PATH, 'input-data')

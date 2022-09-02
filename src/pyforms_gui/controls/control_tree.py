@@ -1,10 +1,7 @@
-# !/usr/bin/python
-# -*- coding: utf-8 -*-
-
 from pyforms_gui.controls.control_base import ControlBase
-from AnyQt.QtWidgets import QTreeWidget, QTreeWidgetItem, QTreeView, QAbstractItemView, QAction
-from AnyQt.QtGui import QIcon, QKeySequence
-from AnyQt import QtCore
+from PyQt5.QtWidgets import QTreeWidget, QTreeWidgetItem, QTreeView, QAbstractItemView, QAction
+from PyQt5.QtGui import QIcon, QKeySequence
+from PyQt5 import QtCore
 
 class ControlTree(ControlBase, QTreeWidget):
     """This class represents a wrapper to the QTreeWidget"""

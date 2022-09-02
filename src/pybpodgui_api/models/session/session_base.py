@@ -1,11 +1,8 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
-
-import os
 import datetime
 import logging
-from confapp import conf
+import os
+
+import pybpodgui_api.settings as conf
 
 logger = logging.getLogger(__name__)
 

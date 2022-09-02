@@ -1,5 +1,6 @@
 import logging
 import os
+import traceback
 
 from pyforms_gui import appmanager
 from pyforms_gui.basewidget import BaseWidget
@@ -10,6 +11,7 @@ try:
 	from pyforms_gui.controls import control_codeeditor
 except:
 	logger.error("Could not import ControlCodeEditor. Is QScintilla installed?")
+	traceback.print_exc()
 
 
 class GenericFileEditor(BaseWidget):

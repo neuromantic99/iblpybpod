@@ -3,30 +3,30 @@ import os
 import pkgutil
 import sys
 
-from AnyQt.QtGui import QIcon
-from AnyQt.QtWidgets import qApp, QMessageBox
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import qApp, QMessageBox
 from pyforms_gui.controls import control_mdiarea
 from pyforms_gui.basewidget import BaseWidget
 
 from pyforms_generic_editor.editor.generic_file_editor import GenericFileEditor
-import pyforms_generic_editor.settings as settingspy_conf
-import pyforms_generic_editor.resources as resources_conf
+import pyforms_generic_editor.settings as sconf
+import pyforms_generic_editor.resources as rconf
 logger = logging.getLogger(__name__)
 
 
 class SafeModeEditor(BaseWidget):
 	def __init__(self):
 
-		BaseWidget.__init__(self, settingspy_conf.GENERIC_EDITOR_TITLE)
+		BaseWidget.__init__(self, sconf.GENERIC_EDITOR_TITLE)
 
-		self.mdi_area = control_mdiarea
+		self.mdi_area = control_mdiarea.ControlMdiArea
 
 		self.mainmenu = [
 			{'File': [
-				{'Exit': self._exit_app, 'icon': QIcon(resources_conf.EXIT_SMALL_ICON)}
+				{'Exit': self._exit_app, 'icon': QIcon(rconf.EXIT_SMALL_ICON)}
 			]},
 			{'Options': [
-				{'Edit user settings': self._edit_user_settings, 'icon': QIcon(resources_conf.USER_SETTINGS_ICON)}
+				{'Edit user settings': self._edit_user_settings, 'icon': QIcon(rconf.USER_SETTINGS_ICON)}
 			]},
 			{'Help': [  # this option works for OSX also
 				{'About QT': self._option_about_qt},
@@ -40,7 +40,7 @@ class SafeModeEditor(BaseWidget):
 		self.mdi_area.tileSubWindows()
 
 	def init_form(self):
-		error_message = settingspy_conf.GENERIC_EDITOR_LOAD_EXCEPTION_TRACEBACK
+		error_message = sconf.GENERIC_EDITOR_LOAD_EXCEPTION_TRACEBACK
 
 		msg = QMessageBox()
 		msg.setIcon(QMessageBox.Critical)
@@ -73,7 +73,7 @@ class SafeModeEditor(BaseWidget):
 			if not hasattr(self, '_user_settings_editor'):
 				user_settings_path = pkgutil.get_loader("pyforms_generic_editor_user_settings").get_filename()
 				self._user_settings_editor = GenericFileEditor(user_settings_path, "user settings editor")
-				self._user_settings_editor.set_cursor_position(settingspy_conf.GENERIC_EDITOR_LOAD_EXCEPTION_LINE - 3, 0)
+				self._user_settings_editor.set_cursor_position(sconf.GENERIC_EDITOR_LOAD_EXCEPTION_LINE - 3, 0)
 			self.mdi_area += self._user_settings_editor
 		except Exception as err:
 			logger.warning("User settings file not found")

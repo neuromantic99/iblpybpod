@@ -1,11 +1,6 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
 import logging
 
-from confapp import conf
-
-from AnyQt.QtWidgets import QMdiArea, QMdiSubWindow
+from PyQt5.QtWidgets import QMdiArea, QMdiSubWindow
 
 from pyforms_gui.controls.control_base import ControlBase
 

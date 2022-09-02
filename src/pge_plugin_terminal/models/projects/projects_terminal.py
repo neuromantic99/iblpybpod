@@ -1,9 +1,6 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-from confapp import conf
-from AnyQt.QtGui import QIcon
-
+import pge_plugin_terminal.settings as conf
 from pge_plugin_terminal.terminal_window import TerminalWindow
+
 
 class ProjectsTerminal(object):
 
@@ -21,7 +18,7 @@ class ProjectsTerminal(object):
 		if not hasattr(self, 'terminal_plugin'):
 			self.terminal_plugin = TerminalWindow(self)
 			self.terminal_plugin.show()
-			self.terminal_plugin.subwindow.resize(*conf.TERMINAL_PLUGIN_WINDOW_SIZE)			
+			self.terminal_plugin.subwindow.resize(*conf.TERMINAL_PLUGIN_WINDOW_SIZE)
 		else:
 			self.terminal_plugin.show()
 

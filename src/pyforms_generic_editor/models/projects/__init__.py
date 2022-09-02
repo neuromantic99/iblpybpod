@@ -1,7 +1,4 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
-from confapp import conf
+import pyforms_generic_editor.settings as conf
 from pyforms_generic_editor.models.projects.projects_dockwindow import ProjectsDockWindow as GenericProjects
 
 Projects = type(

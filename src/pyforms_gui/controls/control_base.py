@@ -1,6 +1,6 @@
-from AnyQt import QtCore
-from AnyQt.QtGui import QIcon, QKeySequence
-from AnyQt.QtWidgets import QMenu, QAction
+from PyQt5 import QtCore
+from PyQt5.QtGui import QIcon, QKeySequence
+from PyQt5.QtWidgets import QMenu, QAction
 
 
 class ControlBase(object):

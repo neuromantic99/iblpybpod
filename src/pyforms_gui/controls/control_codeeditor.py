@@ -1,19 +1,13 @@
 import logging
 
-from AnyQt import _api
-from confapp import conf
+from PyQt5 import QtCore, uic
+from PyQt5.Qsci import QsciScintilla, QsciLexerPython, QsciAPIs
+from PyQt5.QtGui import QFontMetrics, QColor, QIcon, QFont
+from PyQt5.QtWidgets import QApplication
 
-from pyforms_gui.controls.control_base import ControlBase
 import pyforms_gui.utils.tools as tools
-
-from AnyQt import QtCore, uic
-from AnyQt.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QSpinBox
-from AnyQt.QtGui  import QFontMetrics, QColor, QIcon, QFont
-
-if _api.USED_API == _api.QT_API_PYQT5:
-    from PyQt5.Qsci import QsciScintilla, QsciLexerPython, QsciAPIs
-# elif _api.USED_API == _api.QT_API_PYQT4:
-#     from PyQt4.Qsci import QsciScintilla, QsciLexerPython, QsciAPIs
+from pyforms_gui import settings as sconf
+from pyforms_gui.controls.control_base import ControlBase
 
 logger = logging.getLogger(__name__)
 
@@ -67,13 +61,13 @@ class ControlCodeEditor(ControlBase):
         self.form.font_size.addItem('24')
 
         # Set the default font size
-        index = self.form.font_size.findText(conf.PYFORMS_CONTROL_CODE_EDITOR_DEFAULT_FONT_SIZE)
+        index = self.form.font_size.findText(sconf.PYFORMS_CONTROL_CODE_EDITOR_DEFAULT_FONT_SIZE)
         self.form.font_size.setCurrentIndex(index)
 
         self.form.font_size.currentIndexChanged.connect(self.__font_size_index_changed)
 
-        self.form.save_button.setIcon(QIcon(conf.PYFORMS_ICON_CODEEDITOR_SAVE))
-        self.form.discard_button.setIcon(QIcon(conf.PYFORMS_ICON_CODEEDITOR_DISCARD))
+        self.form.save_button.setIcon(QIcon(sconf.PYFORMS_ICON_CODEEDITOR_SAVE))
+        self.form.discard_button.setIcon(QIcon(sconf.PYFORMS_ICON_CODEEDITOR_DISCARD))
 
         self.lexer = QsciLexerPython
 
