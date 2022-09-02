@@ -1,21 +1,21 @@
-# !/usr/bin/python
-# -*- coding: utf-8 -*-
-
 import os
-from AnyQt.QtGui import QIcon, QPixmap
-from AnyQt.QtWidgets import QStyle, qApp, QFileDialog, QColorDialog
+
+from PyQt5.QtGui import QIcon, QPixmap
+from PyQt5.QtWidgets import QStyle, qApp, QColorDialog
+
 
 def path(filename):
-	"""	
-	:param filename: 
-	:return: 
-	"""
-	return os.path.join(os.path.dirname(__file__), filename)
-
+    """
+    :param filename:
+    :return:
+    """
+    return os.path.join(os.path.dirname(__file__), filename)
 
 PYFORMS_ICON_VIDEOPLAYER_PAUSE_PLAY = QIcon()
-PYFORMS_ICON_VIDEOPLAYER_PAUSE_PLAY.addPixmap(qApp.style().standardPixmap(QStyle.SP_MediaPlay), mode=QIcon.Normal,
-                                              state=QIcon.Off)
+PYFORMS_ICON_VIDEOPLAYER_PAUSE_PLAY.addPixmap(
+    qApp.style().standardPixmap(QStyle.SP_MediaPlay),
+    mode=QIcon.Normal,
+    state=QIcon.Off)
 PYFORMS_ICON_VIDEOPLAYER_PAUSE_PLAY.addPixmap(qApp.style().standardPixmap(QStyle.SP_MediaPause), mode=QIcon.Normal,
                                               state=QIcon.On)
 

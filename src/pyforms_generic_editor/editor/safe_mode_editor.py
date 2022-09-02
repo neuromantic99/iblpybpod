@@ -3,8 +3,8 @@ import os
 import pkgutil
 import sys
 
-from AnyQt.QtGui import QIcon
-from AnyQt.QtWidgets import qApp, QMessageBox
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import qApp, QMessageBox
 from pyforms_gui.controls import control_mdiarea
 from pyforms_gui.basewidget import BaseWidget
 
@@ -19,7 +19,7 @@ class SafeModeEditor(BaseWidget):
 
 		BaseWidget.__init__(self, settingspy_conf.GENERIC_EDITOR_TITLE)
 
-		self.mdi_area = control_mdiarea
+		self.mdi_area = control_mdiarea.ControlMdiArea
 
 		self.mainmenu = [
 			{'File': [

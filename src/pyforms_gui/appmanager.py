@@ -1,10 +1,9 @@
 from pyforms_gui.controls.control_dockwidget import ControlDockWidget
-from AnyQt.QtWidgets import QMainWindow, QDockWidget, QAction, QApplication, QToolBar
-from AnyQt import QtCore, _api
-from AnyQt.QtGui import QIcon
+from PyQt5.QtWidgets import QMainWindow, QDockWidget, QAction, QApplication, QToolBar
+from PyQt5 import QtCore
+from PyQt5.QtGui import QIcon
 
 from pyforms_gui import settings as settingspy_conf
-# from confapp import conf
 import sys, os, platform, logging
 
 logger = logging.getLogger(__name__)
@@ -23,13 +22,17 @@ class StandAloneContainer(QMainWindow):
 
         w.init_form()
 
-        if _api.USED_API == _api.QT_API_PYQT5:
-            self.layout().setContentsMargins(settingspy_conf.PYFORMS_MAINWINDOW_MARGIN,
-                                             settingspy_conf.PYFORMS_MAINWINDOW_MARGIN,
-                                             settingspy_conf.PYFORMS_MAINWINDOW_MARGIN,
-                                             settingspy_conf.PYFORMS_MAINWINDOW_MARGIN)
-        elif _api.USED_API == _api.QT_API_PYQT4:
-            self.layout().setMargin(settingspy_conf.PYFORMS_MAINWINDOW_MARGIN)
+        self.layout().setContentsMargins(settingspy_conf.PYFORMS_MAINWINDOW_MARGIN,
+                                         settingspy_conf.PYFORMS_MAINWINDOW_MARGIN,
+                                         settingspy_conf.PYFORMS_MAINWINDOW_MARGIN,
+                                         settingspy_conf.PYFORMS_MAINWINDOW_MARGIN)
+        # if _api.USED_API == _api.QT_API_PYQT5:
+        #     self.layout().setContentsMargins(settingspy_conf.PYFORMS_MAINWINDOW_MARGIN,
+        #                                      settingspy_conf.PYFORMS_MAINWINDOW_MARGIN,
+        #                                      settingspy_conf.PYFORMS_MAINWINDOW_MARGIN,
+        #                                      settingspy_conf.PYFORMS_MAINWINDOW_MARGIN)
+        # elif _api.USED_API == _api.QT_API_PYQT4:
+        #     self.layout().setMargin(settingspy_conf.PYFORMS_MAINWINDOW_MARGIN)
 
         self.setCentralWidget(w)
         self.setWindowTitle(w.title)
@@ -73,13 +76,15 @@ class StandAloneContainer(QMainWindow):
                     dock.setFeatures(
                         QDockWidget.DockWidgetFloatable | QDockWidget.DockWidgetClosable | QDockWidget.DockWidgetMovable)
                     dock.setObjectName(name)
-                        
-                    if _api.USED_API == _api.QT_API_PYQT5:
-                        dock.setContentsMargins(0,0,0,0)
-                        widget.form.layout().setContentsMargins(widget.margin,widget.margin,widget.margin,widget.margin)
-                    elif _api.USED_API == _api.QT_API_PYQT4:
-                        dock.setMargin(0)
-                        widget.form.layout().setMargin(widget.margin)
+
+                    dock.setContentsMargins(0, 0, 0, 0)
+                    widget.form.layout().setContentsMargins(widget.margin, widget.margin, widget.margin, widget.margin)
+                    # if _api.USED_API == _api.QT_API_PYQT5:
+                    #     dock.setContentsMargins(0,0,0,0)
+                    #     widget.form.layout().setContentsMargins(widget.margin,widget.margin,widget.margin,widget.margin)
+                    # elif _api.USED_API == _api.QT_API_PYQT4:
+                    #     dock.setMargin(0)
+                    #     widget.form.layout().setMargin(widget.margin)
 
                     # print dock.objectName(),1
                     #widget.parent = self
@@ -94,11 +99,12 @@ class StandAloneContainer(QMainWindow):
                 dock.setFeatures(
                     QDockWidget.DockWidgetFloatable | QDockWidget.DockWidgetClosable | QDockWidget.DockWidgetMovable)
                 # dock.setAllowedAreas(QtCore.Qt.LeftDockWidgetArea | QtCore.Qt.RightDockWidgetArea)
-                
-                if _api.USED_API == _api.QT_API_PYQT5:
-                    widget.form.layout().setContentsMargins(widget.margin,widget.margin,widget.margin,widget.margin)
-                elif _api.USED_API == _api.QT_API_PYQT5:
-                    widget.form.layout().setMargin(widget.margin)
+
+                widget.form.layout().setContentsMargins(widget.margin, widget.margin, widget.margin, widget.margin)
+                # if _api.USED_API == _api.QT_API_PYQT5:
+                #     widget.form.layout().setContentsMargins(widget.margin,widget.margin,widget.margin,widget.margin)
+                # elif _api.USED_API == _api.QT_API_PYQT5:
+                #     widget.form.layout().setMargin(widget.margin)
 
                 #widget.parent = self
 

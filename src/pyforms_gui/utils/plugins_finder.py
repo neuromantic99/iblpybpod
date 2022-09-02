@@ -1,9 +1,7 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
-import re
 import logging
-from confapp import conf
+import re
+
+from pyforms_gui import settings as settingspy_conf
 
 logger = logging.getLogger(__name__)
 
@@ -44,11 +42,11 @@ class PluginsFinder(object):
                     class_def = getattr(module, class_name)
                     res.append(class_def)
                 except AttributeError:
-                    if not conf.PYFORMS_SILENT_PLUGINS_FINDER:
+                    if not settingspy_conf.PYFORMS_SILENT_PLUGINS_FINDER:
                         logger.error('Error importing model {0} {1} {2}'.format(str(plugin), str(package_name), str(class_name)),  exc_info=True)
                         
             except ImportError:
-                if not conf.PYFORMS_SILENT_PLUGINS_FINDER:
+                if not settingspy_conf.PYFORMS_SILENT_PLUGINS_FINDER:
                     logger.error('Error importing model {0} {1} {2}'.format(str(plugin), str(package_name), str(class_name)),  exc_info=True)
                         
             except:

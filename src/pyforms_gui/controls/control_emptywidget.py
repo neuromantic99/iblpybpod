@@ -1,7 +1,8 @@
-from AnyQt                              import _api
-from AnyQt.QtWidgets                    import QWidget, QVBoxLayout
-from pyforms_gui.controls.control_base  import ControlBase
-from pyforms_gui.basewidget             import BaseWidget
+# from AnyQt                              import _api
+# from AnyQt.QtWidgets                    import QWidget, QVBoxLayout
+from PyQt5.QtWidgets import QWidget, QVBoxLayout
+from pyforms_gui.controls.control_base import ControlBase
+from pyforms_gui.basewidget import BaseWidget
 
 
 class ControlEmptyWidget(ControlBase, QWidget):
@@ -9,17 +10,16 @@ class ControlEmptyWidget(ControlBase, QWidget):
         QWidget.__init__(self)
         layout = QVBoxLayout()
 
-        if _api.USED_API == _api.QT_API_PYQT5:
-            layout.setContentsMargins(0,0,0,0)
-        elif _api.USED_API == _api.QT_API_PYQT4:
-            layout.setMargin(0)
-
+        layout.setContentsMargins(0, 0, 0, 0)
+        # if _api.USED_API == _api.QT_API_PYQT5:
+        #     layout.setContentsMargins(0,0,0,0)
+        # elif _api.USED_API == _api.QT_API_PYQT4:
+        #     layout.setMargin(0)
 
         self.form.setLayout(layout)
 
         ControlBase.__init__(self, *args, **kwargs)
         self.value = kwargs.get('default', None)
-
 
     ############################################################################
     ############ Properties ####################################################
