@@ -1,11 +1,7 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 import logging
 
 import pyforms
-from pyforms.basewidget import BaseWidget
-
+from pyforms.gui.basewidget import BaseWidget
 
 logger = logging.getLogger(__name__)
 

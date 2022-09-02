@@ -1,27 +1,14 @@
-from pyforms.basewidget import BaseWidget
-from pyforms.controls   import ControlLabel
-from pyforms.controls   import ControlText
-from pyforms.controls   import ControlList
-from pyforms.controls   import ControlButton
-from pyforms.controls   import ControlProgress
-from pyforms.controls   import ControlTextArea
-from pyforms.controls   import ControlCombo
-from pyforms.controls   import ControlWeb
-
-from AnyQt.QtWidgets import QApplication
-from AnyQt.QtCore import QTimer
-
-from confapp import conf
-
+import subprocess
+import sys
+import xmlrpc.client
 from importlib import reload
 
-import yaml
-import sys
-import subprocess
-import xmlrpc.client
 import pkg_resources
-import datetime
-
+from pyforms.controls import ControlButton
+from pyforms.controls import ControlCombo
+from pyforms.controls import ControlLabel
+from pyforms.controls import ControlTextArea
+from pyforms.gui.basewidget import BaseWidget
 
 
 class PackageWindow(BaseWidget):

@@ -10,17 +10,15 @@ from pyforms.gui.basewidget import BaseWidget
 import pyforms_generic_editor
 from pyforms_generic_editor.editor.generic_file_editor import GenericFileEditor
 from pyforms_generic_editor.plugins import loader as plugin_loader
+import pyforms_generic_editor.settings as settingspy_conf
+import pyforms_generic_editor.resources as resources_conf
 
 logger = logging.getLogger(__name__)
 
 
 class BaseEditor(BaseWidget):
 	def __init__(self):
-
-		global conf
-		conf += 'pyforms_generic_editor.resources'
-
-		BaseWidget.__init__(self, conf.GENERIC_EDITOR_TITLE)
+		BaseWidget.__init__(self, settingspy_conf.GENERIC_EDITOR_TITLE)
 
 		self.mdi_area = ControlMdiArea()
 		self.dock = ControlDockWidget(label='Projects', side=ControlDockWidget.SIDE_LEFT, order=1)
@@ -31,7 +29,7 @@ class BaseEditor(BaseWidget):
 
 		self.mainmenu = [
 			{'File': [
-				{'Exit': self._exit_app, 'icon': QIcon(conf.EXIT_SMALL_ICON)}
+				{'Exit': self._exit_app, 'icon': QIcon(resources_conf.EXIT_SMALL_ICON)}
 			]},
 			{'Window': [
 				{'Cascade all': self._option_cascade_all},
@@ -41,7 +39,7 @@ class BaseEditor(BaseWidget):
 				{'Show details': self.details.show},
 			]},
 			{'Options': [
-				{'Edit user settings': self._edit_user_settings, 'icon': QIcon(conf.USER_SETTINGS_ICON)}
+				{'Edit user settings': self._edit_user_settings, 'icon': QIcon(resources_conf.USER_SETTINGS_ICON)}
 			]},
 			{'Help': [  # this option works for OSX also
 				{'About QT': self._option_about_qt},
@@ -51,20 +49,20 @@ class BaseEditor(BaseWidget):
 
 		plugin_loader.install_plugins(self)  # Load plugins
 
-		if conf.GENERIC_EDITOR_MODEL:
-			if isinstance(conf.GENERIC_EDITOR_MODEL, str):
-				c = self.__load_module(conf.GENERIC_EDITOR_MODEL)
+		if settingspy_conf.GENERIC_EDITOR_MODEL:
+			if isinstance(settingspy_conf.GENERIC_EDITOR_MODEL, str):
+				c = self.__load_module(settingspy_conf.GENERIC_EDITOR_MODEL)
 			else:
-				c = conf.GENERIC_EDITOR_MODEL
+				c = settingspy_conf.GENERIC_EDITOR_MODEL
 			self._model = c(self)
 
 	def init_form(self):
 		BaseWidget.init_form(self)
 
 		# Loads a project automatically.
-		if conf.DEFAULT_PROJECT_PATH:
+		if settingspy_conf.DEFAULT_PROJECT_PATH:
 			try:
-				self.model.open_project(conf.DEFAULT_PROJECT_PATH)
+				self.model.open_project(settingspy_conf.DEFAULT_PROJECT_PATH)
 			except Exception as err:
 				for project in self.model.projects:
 					project.close(silent=True)
@@ -92,7 +90,7 @@ class BaseEditor(BaseWidget):
 			except Exception as err:
 				logger.error(str(err), exec_info=True)
 
-		self.setWindowIcon(QIcon(conf.APP_LOGO_ICON))
+		self.setWindowIcon(QIcon(resources_conf.APP_LOGO_ICON))
 		text = """
 				<html><body>
 				<h2>About {gui_title}</h2>

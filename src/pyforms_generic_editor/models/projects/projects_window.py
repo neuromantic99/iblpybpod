@@ -1,17 +1,12 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 import logging
 
-from confapp import conf
-
-
 import pyforms
-from pyforms.basewidget import BaseWidget
+from pyforms.gui.basewidget import BaseWidget
 
 from pyforms_generic_editor.models.project import Project
 
 logger = logging.getLogger(__name__)
+
 
 class ProjectsWindow(BaseWidget):
     def __init__(self, mainwindow=None):
