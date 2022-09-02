@@ -3,15 +3,15 @@ import pkgutil
 
 from AnyQt.QtGui import QIcon
 from AnyQt.QtWidgets import qApp
-from pyforms.controls import ControlDockWidget
-from pyforms.controls import ControlMdiArea
-from pyforms.gui.basewidget import BaseWidget
 
 import pyforms_generic_editor
+import pyforms_generic_editor.resources as resources_conf
+import pyforms_generic_editor.settings as settingspy_conf
 from pyforms_generic_editor.editor.generic_file_editor import GenericFileEditor
 from pyforms_generic_editor.plugins import loader as plugin_loader
-import pyforms_generic_editor.settings as settingspy_conf
-import pyforms_generic_editor.resources as resources_conf
+from pyforms_gui.basewidget import BaseWidget
+from pyforms_gui.controls import control_dockwidget
+from pyforms_gui.controls import control_mdiarea
 
 logger = logging.getLogger(__name__)
 
@@ -20,9 +20,9 @@ class BaseEditor(BaseWidget):
 	def __init__(self):
 		BaseWidget.__init__(self, settingspy_conf.GENERIC_EDITOR_TITLE)
 
-		self.mdi_area = ControlMdiArea()
-		self.dock = ControlDockWidget(label='Projects', side=ControlDockWidget.SIDE_LEFT, order=1)
-		self.details = ControlDockWidget(label='Details', side=ControlDockWidget.SIDE_RIGHT, order=2)
+		self.mdi_area = control_mdiarea.ControlMdiArea()
+		self.dock = control_dockwidget.ControlDockWidget(label='Projects', side=control_dockwidget.ControlDockWidget.SIDE_LEFT, order=1)
+		self.details = control_dockwidget.ControlDockWidget(label='Details', side=control_dockwidget.ControlDockWidget.SIDE_RIGHT, order=2)
 
 		self.dependencies = []
 		self.plugins_classes = []

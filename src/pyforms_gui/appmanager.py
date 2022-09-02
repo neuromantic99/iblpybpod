@@ -1,14 +1,13 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
 from pyforms_gui.controls.control_dockwidget import ControlDockWidget
 from AnyQt.QtWidgets import QMainWindow, QDockWidget, QAction, QApplication, QToolBar
-from AnyQt           import QtCore, _api
-from AnyQt.QtGui     import QIcon
+from AnyQt import QtCore, _api
+from AnyQt.QtGui import QIcon
 
 from confapp import conf
 import sys, os, platform, logging
 
 logger = logging.getLogger(__name__)
+
 
 class StandAloneContainer(QMainWindow):
     def __init__(self, ClassObject):

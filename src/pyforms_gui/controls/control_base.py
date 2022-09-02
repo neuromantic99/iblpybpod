@@ -1,11 +1,7 @@
-# !/usr/bin/python
-# -*- coding: utf-8 -*-
-
-from confapp      import conf
-
-from AnyQt           import QtCore, uic
+from AnyQt import QtCore
+from AnyQt.QtGui import QIcon, QKeySequence
 from AnyQt.QtWidgets import QMenu, QAction
-from AnyQt.QtGui     import QIcon, QKeySequence
+
 
 class ControlBase(object):
     """

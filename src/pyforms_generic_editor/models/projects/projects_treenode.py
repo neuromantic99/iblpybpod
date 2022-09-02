@@ -1,9 +1,7 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 import logging
 
-from pyforms.controls import ControlTree
+from pyforms_gui.controls import control_tree
+# from pyforms.controls import ControlTree
 
 from pyforms_generic_editor.models.projects.projects_window import ProjectsWindow
 
@@ -14,7 +12,7 @@ class ProjectsTreeNode(ProjectsWindow):
 	def __init__(self, mainwindow=None):
 		ProjectsWindow.__init__(self, mainwindow)
 
-		self.tree = ControlTree('Projects')
+		self.tree = control_tree.ControlTree('Projects')
 
 		self.tree.item_selection_changed_event = self.__item_sel_changed_evt
 		self.clear()

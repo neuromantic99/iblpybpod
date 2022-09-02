@@ -1,13 +1,13 @@
 import logging
 import os
 
-import pyforms
-from pyforms.gui.basewidget import BaseWidget
+from pyforms_gui import appmanager
+from pyforms_gui.basewidget import BaseWidget
 
 logger = logging.getLogger(__name__)
 
 try:
-	from pyforms.controls import ControlCodeEditor
+	from pyforms_gui.controls import control_codeeditor
 except:
 	logger.error("Could not import ControlCodeEditor. Is QScintilla installed?")
 
@@ -23,7 +23,7 @@ class GenericFileEditor(BaseWidget):
 
 		self.path = path
 
-		self.editor = ControlCodeEditor(readonly=read_only)
+		self.editor = control_codeeditor.ControlCodeEditor(readonly=read_only)
 		self.editor.value = self.content
 
 		self.editor.changed_event = self.__content_changed_evt
@@ -80,4 +80,5 @@ class GenericFileEditor(BaseWidget):
 
 # Execute the application
 if __name__ == "__main__":
-	pyforms.start_app(SettingsEditor)
+	appmanager.start_app(GenericFileEditor)
+	# appmanager.start_app(SettingsEditor)

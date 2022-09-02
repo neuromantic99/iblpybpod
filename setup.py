@@ -3,7 +3,7 @@ from pathlib import Path
 
 from setuptools import setup, find_packages
 
-IBLPYBPOD_CURRENT_VERSION = "1.8.2a1"
+IBLPYBPOD_CURRENT_VERSION = "1.8.2a2"
 CURRENT_DIRECTORY = Path(__file__).parent.absolute()
 CURRENT_PYTHON_VERSION = sys.version_info[:2]
 REQUIRED_PYTHON_VERSION = (3, 8)

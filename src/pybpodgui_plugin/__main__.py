@@ -68,8 +68,8 @@ except Exception as err:
 
 
 def start():
-    import pyforms
-    pyforms.start_app(Editor, conf.GENERIC_EDITOR_WINDOW_GEOMETRY)
+    from pyforms_gui import appmanager
+    appmanager.start_app(Editor, conf.GENERIC_EDITOR_WINDOW_GEOMETRY)
 
 
 if __name__ == '__main__':

@@ -1,7 +1,8 @@
 import logging
 
-import pyforms
-from pyforms.gui.basewidget import BaseWidget
+from pyforms_gui import appmanager
+
+from pyforms_gui.basewidget import BaseWidget
 
 logger = logging.getLogger(__name__)
 
@@ -28,4 +29,4 @@ class GenericProject(BaseWidget):
 
 # Execute the application
 if __name__ == "__main__":
-	pyforms.start_app(GenericProject)
+	appmanager.start_app(GenericProject)
