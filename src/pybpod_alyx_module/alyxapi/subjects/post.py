@@ -1,10 +1,8 @@
-import requests
-import json
-from confapp import conf
+from pybpod_alyx_module import settings as settingspy_conf
+ENDPOINT = settingspy_conf.ALYX_PLUGIN_ADDRESS+'/subjects'
 
-ENDPOINT = conf.ALYX_PLUGIN_ADDRESS+'/subjects'
 
-class Post():
+class Post:
 
     def __init__(self,_apibase):
         self.apibase = _apibase     

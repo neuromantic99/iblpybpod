@@ -1,8 +1,3 @@
-#!/usr/bifn/python
-# -*- coding: utf-8 -*-
-
-from confapp import conf
-
 from AnyQt                              import _api
 from AnyQt.QtWidgets                    import QWidget, QVBoxLayout
 from pyforms_gui.controls.control_base  import ControlBase

@@ -1,6 +1,4 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-import logging, os
+import logging
 
 SETTINGS_PRIORITY = 999
 

@@ -1,5 +1,4 @@
 AnyQt
-confapp
 logging-bootstrap
 ONE-api
 # opencv-python

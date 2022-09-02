@@ -1,8 +1,9 @@
 import requests
-import json
-from confapp import conf
-from pybpod_alyx_module.alyxapi.subjects.subjects import Subjects
+
+from pybpod_alyx_module import settings as settingspy_conf
 from pybpod_alyx_module.alyxapi.data.data import Data
+from pybpod_alyx_module.alyxapi.subjects.subjects import Subjects
+
 
 class AlyxAPI():
 
@@ -10,7 +11,7 @@ class AlyxAPI():
         self._logged = False
         self.subjects = Subjects(self)
         self.data = Data(self)
-        self.addr = conf.ALYX_PLUGIN_ADDRESS
+        self.addr = settingspy_conf.ALYX_PLUGIN_ADDRESS
         #self.serveraddr = 'http://alyx.champalimaud.pt:8000'
         #self.auth_endpoint = '/auth-token/'
 

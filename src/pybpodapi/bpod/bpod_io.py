@@ -1,10 +1,7 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 import logging
 import os
 
-from confapp import conf as settings
+from pybpodapi import settings
 from pybpodapi.bpod.bpod_com_protocol_modules import BpodCOMProtocolModules
 from pybpodapi.com.messaging.session_info import SessionInfo
 

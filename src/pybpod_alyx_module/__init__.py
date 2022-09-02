@@ -6,8 +6,4 @@ __maintainer__ 	= ['Sergio Copeto']
 __email__ 		= ['sergio.copeto']
 __status__ 		= "Development"
 
-from confapp import conf
-
-conf += 'pybpod_alyx_module.settings'
-
 from pybpod_alyx_module.module import Alyx as BpodModule

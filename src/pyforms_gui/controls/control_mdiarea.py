@@ -1,9 +1,4 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
 import logging
-
-from confapp import conf
 
 from AnyQt.QtWidgets import QMdiArea, QMdiSubWindow
 
