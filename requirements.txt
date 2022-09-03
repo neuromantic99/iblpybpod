@@ -1,9 +1,9 @@
-# AnyQt
 logging-bootstrap
 ONE-api
 # opencv-python
 opencv-python==4.3.0.36  # locking it down may just be necessary on dev box
 PyQt5
-PyQtWebEngine  # check if this is required
+# PyQtWebEngine  # check if this is required
 PyYAML
+QScintilla
 safe-and-collaborative-architecture

@@ -1,6 +1,3 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 PYBPOD_API_LOG_LEVEL = None
 PYBPOD_API_LOG_FILE = "pybpod-api.log"
 

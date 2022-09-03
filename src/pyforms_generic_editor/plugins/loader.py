@@ -1,13 +1,9 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
-
+import importlib
 import logging
 import os
-import importlib
 import sys
 
-from confapp import conf
+from pyforms_generic_editor import settings as settingspy_conf
 
 logger = logging.getLogger(__name__)
 
@@ -18,8 +14,8 @@ def install_plugins(main_window):
 
 	logger.info("------------- LOADING PLUGINS -------------")
 
-	plugins_path = conf.GENERIC_EDITOR_PLUGINS_PATH
-	plugins_list = conf.GENERIC_EDITOR_PLUGINS_LIST
+	plugins_path = settingspy_conf.GENERIC_EDITOR_PLUGINS_PATH
+	plugins_list = settingspy_conf.GENERIC_EDITOR_PLUGINS_LIST
 
 	# plugins_2_load = []
 
@@ -46,7 +42,7 @@ def install_plugins(main_window):
 		logger.info("Installing plugin: {0}".format(plugin_name))
 		try:
 			m = importlib.import_module(plugin_name)
-			conf.GENERIC_EDITOR_PLUGINS_FINDER += plugin_name
+			settingspy_conf.GENERIC_EDITOR_PLUGINS_FINDER += plugin_name
 			main_window.plugins_classes.append(m)
 		except Exception as err:
 			logger.warning("Skiping bad plugin: %s", err, exc_info=True)

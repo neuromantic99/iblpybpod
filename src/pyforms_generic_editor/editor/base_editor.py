@@ -1,8 +1,8 @@
 import logging
 import pkgutil
 
-from AnyQt.QtGui import QIcon
-from AnyQt.QtWidgets import qApp
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QApplication
 
 import pyforms_generic_editor
 import pyforms_generic_editor.resources as resources_conf
@@ -144,7 +144,7 @@ class BaseEditor(BaseWidget):
 		Exit app option from the menu
 		"""
 		if self._confirm_exit():
-			qApp.quit()
+			QApplication.quit()
 
 	def _confirm_exit(self):
 		"""
