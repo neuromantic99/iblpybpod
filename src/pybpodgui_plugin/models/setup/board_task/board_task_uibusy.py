@@ -1,11 +1,8 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
 import logging
 
-from confapp import conf
+from PyQt5.QtGui import QIcon
 
-from AnyQt.QtGui import QIcon
-
+import pyforms_generic_editor.resources as conf
 from pybpodgui_plugin.models.setup.board_task.board_task_window import BoardTaskWindow
 
 logger = logging.getLogger(__name__)

@@ -1,8 +1,7 @@
-import pyforms
-from AnyQt import QtCore, QtGui
+from PyQt5 import QtCore, QtGui
 from pybpod_alyx_module.module_api import AlyxModule
-from pyforms.basewidget import BaseWidget
-from pyforms.controls import ControlList
+from pyforms_gui.basewidget import BaseWidget
+from pyforms_gui.controls.control_list import ControlList
 
 
 class AlyxDetails(AlyxModule, BaseWidget):
@@ -53,4 +52,5 @@ class AlyxDetails(AlyxModule, BaseWidget):
 
 
 if __name__ == '__main__':
-    pyforms.start_app(AlyxDetails, geometry=(0, 0, 300, 300))
+    from pyforms_gui.appmanager import start_app
+    start_app(AlyxDetails, geometry=(0, 0, 300, 300))

@@ -1,12 +1,7 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
-from confapp import conf
-
-from AnyQt           import QtCore, _api
-from AnyQt.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QSpinBox
-from AnyQt.QtGui     import QFont, QColor, QCursor, QPainter
-from AnyQt.QtWidgets import QLabel, QSizePolicy
+from PyQt5 import QtCore
+from PyQt5.QtGui import QFont, QColor, QCursor, QPainter
+from PyQt5.QtWidgets import QLabel, QSizePolicy
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QSpinBox
 
 from pyforms_gui.controls.control_base import ControlBase
 
@@ -295,12 +290,8 @@ class ControlBoundingSlider(ControlBase):
                 hlayout = QHBoxLayout()
             else:
                 hlayout = QVBoxLayout()
-            
 
-            if _api.USED_API == _api.QT_API_PYQT5:
-                hlayout.setContentsMargins(0,0,0,0)
-            elif _api.USED_API == _api.QT_API_PYQT4:
-                hlayout.setMargin(0)
+            hlayout.setContentsMargins(0, 0, 0, 0)
 
             if self._label is not None:
                 self._controllabel = QLabel(self.form)

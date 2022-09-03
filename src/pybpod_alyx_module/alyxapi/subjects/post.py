@@ -1,5 +1,5 @@
-from pybpod_alyx_module import settings as settingspy_conf
-ENDPOINT = settingspy_conf.ALYX_PLUGIN_ADDRESS+'/subjects'
+import pybpod_alyx_module.settings as conf
+ENDPOINT = conf.ALYX_PLUGIN_ADDRESS+'/subjects'
 
 
 class Post:

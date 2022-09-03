@@ -1,25 +1,19 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 import logging
+
+from PyQt5 import QtGui
+from PyQt5.QtWidgets import QApplication
 from serial.tools import list_ports
-from AnyQt import QtGui
-from AnyQt.QtWidgets import QApplication
 
-from confapp import conf
-
-import pyforms as app
-from pyforms.basewidget import BaseWidget
-from pyforms.controls import ControlText, ControlCombo
-from pyforms.controls import ControlButton
-from pyforms.controls import ControlList
-from pyforms.controls import ControlCheckBoxList
-from pyforms.controls import ControlNumber
-
-from pybpodgui_api.models.board import Board
-
-
+import pybpodgui_plugin.resources as conf
 from pybpodapi.bpod import Bpod
+from pybpodgui_api.models.board import Board
+from pyforms_gui.basewidget import BaseWidget
+from pyforms_gui.controls.control_button import ControlButton
+from pyforms_gui.controls.control_checkboxlist import ControlCheckBoxList
+from pyforms_gui.controls.control_combo import ControlCombo
+from pyforms_gui.controls.control_list import ControlList
+from pyforms_gui.controls.control_number import ControlNumber
+from pyforms_gui.controls.control_text import ControlText
 
 logger = logging.getLogger(__name__)
 
@@ -257,4 +251,5 @@ class BoardWindow(Board, BaseWidget):
 
 # Execute the application
 if __name__ == "__main__":
-    app.start_app(BoardWindow)
+    from pyforms_gui.appmanager import start_app
+    start_app(BoardWindow)

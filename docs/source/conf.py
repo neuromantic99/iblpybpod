@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-#
 # Configuration file for the Sphinx documentation builder.
 #
 # This file does only contain a selection of the most common options. For a
@@ -19,7 +17,7 @@
 import sys
 import os
 import shlex
-import recommonmark.parser
+# import recommonmark.parser  # unsure if sphinx documentation will be used going forwards
 
 
 # -- Project information -----------------------------------------------------

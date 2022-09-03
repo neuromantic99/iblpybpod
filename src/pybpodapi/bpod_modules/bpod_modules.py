@@ -1,6 +1,7 @@
-import time
 import importlib
-from confapp import conf
+import time
+
+import pybpodapi.settings as conf
 
 
 class BpodModules(object):

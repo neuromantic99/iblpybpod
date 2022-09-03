@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QMainWindow, QDockWidget, QAction, QApplication, QTo
 from PyQt5 import QtCore
 from PyQt5.QtGui import QIcon
 
-from pyforms_gui import settings as settingspy_conf
+import pyforms_gui.settings as conf
 import sys, os, platform, logging
 
 logger = logging.getLogger(__name__)
@@ -22,17 +22,10 @@ class StandAloneContainer(QMainWindow):
 
         w.init_form()
 
-        self.layout().setContentsMargins(settingspy_conf.PYFORMS_MAINWINDOW_MARGIN,
-                                         settingspy_conf.PYFORMS_MAINWINDOW_MARGIN,
-                                         settingspy_conf.PYFORMS_MAINWINDOW_MARGIN,
-                                         settingspy_conf.PYFORMS_MAINWINDOW_MARGIN)
-        # if _api.USED_API == _api.QT_API_PYQT5:
-        #     self.layout().setContentsMargins(settingspy_conf.PYFORMS_MAINWINDOW_MARGIN,
-        #                                      settingspy_conf.PYFORMS_MAINWINDOW_MARGIN,
-        #                                      settingspy_conf.PYFORMS_MAINWINDOW_MARGIN,
-        #                                      settingspy_conf.PYFORMS_MAINWINDOW_MARGIN)
-        # elif _api.USED_API == _api.QT_API_PYQT4:
-        #     self.layout().setMargin(settingspy_conf.PYFORMS_MAINWINDOW_MARGIN)
+        self.layout().setContentsMargins(conf.PYFORMS_MAINWINDOW_MARGIN,
+                                         conf.PYFORMS_MAINWINDOW_MARGIN,
+                                         conf.PYFORMS_MAINWINDOW_MARGIN,
+                                         conf.PYFORMS_MAINWINDOW_MARGIN)
 
         self.setCentralWidget(w)
         self.setWindowTitle(w.title)
@@ -116,17 +109,17 @@ class StandAloneContainer(QMainWindow):
                 widget.dock = dock
                 if not widget._show: dock.hide()
 
-        if settingspy_conf.PYFORMS_STYLESHEET:
+        if conf.PYFORMS_STYLESHEET:
 
-            stylesheet_files = [settingspy_conf.PYFORMS_STYLESHEET]
+            stylesheet_files = [conf.PYFORMS_STYLESHEET]
 
             p = platform.system()
-            if p == 'Windows' and settingspy_conf.PYFORMS_STYLESHEET_WINDOWS:
-                stylesheet_files.append(settingspy_conf.PYFORMS_STYLESHEET_WINDOWS)
-            elif p == 'Darwin' and settingspy_conf.PYFORMS_STYLESHEET_DARWIN:
-                stylesheet_files.append(settingspy_conf.PYFORMS_STYLESHEET_DARWIN)
-            elif p == 'Linux' and settingspy_conf.PYFORMS_STYLESHEET_LINUX:
-                stylesheet_files.append(settingspy_conf.PYFORMS_STYLESHEET_LINUX)
+            if p == 'Windows' and conf.PYFORMS_STYLESHEET_WINDOWS:
+                stylesheet_files.append(conf.PYFORMS_STYLESHEET_WINDOWS)
+            elif p == 'Darwin' and conf.PYFORMS_STYLESHEET_DARWIN:
+                stylesheet_files.append(conf.PYFORMS_STYLESHEET_DARWIN)
+            elif p == 'Linux' and conf.PYFORMS_STYLESHEET_LINUX:
+                stylesheet_files.append(conf.PYFORMS_STYLESHEET_LINUX)
 
             logger.debug('Import stylesheets: {0}'.format(stylesheet_files))
             self.loadStyleSheetFile(stylesheet_files)

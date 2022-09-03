@@ -39,7 +39,7 @@ try:
     #     sys.path.insert(0, home)
     #     import user_settings
 
-    from pyforms_generic_editor import settings as settingspy_conf
+    import pyforms_generic_editor.settings as conf
 
     loggingbootstrap.create_double_logger(
         "pyforms_generic_editor",
@@ -70,7 +70,7 @@ except Exception as err:
 
 def start():
     from pyforms_gui import appmanager
-    appmanager.start_app(Editor, settingspy_conf.GENERIC_EDITOR_WINDOW_GEOMETRY)
+    appmanager.start_app(Editor, conf.GENERIC_EDITOR_WINDOW_GEOMETRY)
 
 
 if __name__ == '__main__':

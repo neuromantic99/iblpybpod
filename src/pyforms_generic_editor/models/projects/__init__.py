@@ -1,8 +1,8 @@
-from pyforms_generic_editor import settings as settingspy_conf
+import pyforms_generic_editor.settings as conf
 from pyforms_generic_editor.models.projects.projects_dockwindow import ProjectsDockWindow as GenericProjects
 
 Projects = type(
     'Projects',
-    tuple(settingspy_conf.GENERIC_EDITOR_PLUGINS_FINDER.find_class('models.projects.Projects') + [GenericProjects]),
+    tuple(conf.GENERIC_EDITOR_PLUGINS_FINDER.find_class('models.projects.Projects') + [GenericProjects]),
     {}
 )

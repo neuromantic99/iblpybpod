@@ -1,16 +1,15 @@
 import logging
-from confapp import conf
+import sys
 from datetime import datetime as datetime_now
-
-import pybpodapi
-from pybpodapi.com.messaging.trial import Trial
-from pybpodapi.com.messaging.state_occurrence import StateOccurrence
 
 from sca.formats import csv
 
-import sys
-from pybpodapi.com.stdout_buffer import StdoutBuffer
+import pybpodapi
+from pybpodapi import settings as conf
+from pybpodapi.com.messaging.state_occurrence import StateOccurrence
+from pybpodapi.com.messaging.trial import Trial
 from pybpodapi.com.stderr_buffer import StderrBuffer
+from pybpodapi.com.stdout_buffer import StdoutBuffer
 
 logger = logging.getLogger(__name__)
 

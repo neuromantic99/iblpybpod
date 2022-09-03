@@ -1,16 +1,11 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 import logging
 import re
 
-import pyforms as app
-from pyforms.basewidget import BaseWidget
-from pyforms.controls import ControlList
-from pyforms.controls import ControlCheckBox
-
-from pybpodgui_plugin.models.setup.task_variable import TaskVariableWindow
 from pybpodgui_api.models.setup.board_task import BoardTask
+from pybpodgui_plugin.models.setup.task_variable import TaskVariableWindow
+from pyforms_gui.basewidget import BaseWidget
+from pyforms_gui.controls.control_checkbox import ControlCheckBox
+from pyforms_gui.controls.control_list import ControlList
 
 logger = logging.getLogger(__name__)
 
@@ -148,4 +143,5 @@ class BoardTaskWindow(BoardTask, BaseWidget):
 
 # Execute the application
 if __name__ == "__main__":
-    app.start_app(BoardTaskWindow)
+    from pyforms_gui.appmanager import start_app
+    start_app(BoardTaskWindow)

@@ -1,7 +1,4 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
-from confapp import conf
+import pyforms_generic_editor.settings as conf
 
 from pybpodgui_plugin.models.setup.board_task.board_task_uibusy import BoardTaskUIBusy
 
