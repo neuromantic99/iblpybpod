@@ -1,9 +1,10 @@
 import logging
-from confapp import conf
 
-from AnyQt.QtGui import QIcon
-from AnyQt import QtCore
+from PyQt5 import QtCore
+from PyQt5.QtGui import QIcon
 
+import pybpodgui_plugin.resources as pybpod_conf
+import pyforms_generic_editor.resources as pyforms_conf
 from pybpodgui_plugin.models.user.user_window import UserWindow
 
 logger = logging.getLogger(__name__)
@@ -16,13 +17,13 @@ class UserTreeNode(UserWindow):
         self.create_treenode(self.tree)
 
     def create_treenode(self, tree):
-        self.node = tree.create_child(self._name, self.project.users_node, icon=QIcon(conf.PERSON_SMALL_ICON))
+        self.node = tree.create_child(self._name, self.project.users_node, icon=QIcon(pybpod_conf.PERSON_SMALL_ICON))
         self.node.key_pressed_event = self.node_key_pressed_event
         # print(self.node)
         self.node.window = self
         self.node.double_clicked_event = self.node_double_clicked_event
 
-        tree.add_popup_menu_option('Remove', self.remove, item=self.node, icon=QIcon(conf.REMOVE_SMALL_ICON))
+        tree.add_popup_menu_option('Remove', self.remove, item=self.node, icon=QIcon(pyforms_conf.REMOVE_SMALL_ICON))
         return self.node
 
     def node_double_clicked_event(self):

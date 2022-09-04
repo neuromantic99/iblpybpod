@@ -1,6 +1,3 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
 __author__ = "Ricardo Ribeiro"
 __credits__ = ["Ricardo Ribeiro"]
 __license__ = "MIT"
@@ -9,10 +6,11 @@ __maintainer__ = "Ricardo Ribeiro"
 __email__ = "ricardojvr@gmail.com"
 __status__ = "Development"
 
-from AnyQt.QtWebEngineWidgets 			import QWebEngineView as QWebView
-from AnyQt.QtCore 						import QUrl
-from AnyQt.QtWidgets                    import QSizePolicy
-from pyforms_gui.controls.control_base 	import ControlBase
+from PyQt5.QtCore import QUrl
+from PyQt5.QtWebEngineWidgets import QWebEngineView as QWebView
+from PyQt5.QtWidgets import QSizePolicy
+
+from pyforms_gui.controls.control_base import ControlBase
 
 
 class ControlWeb(ControlBase, QWebView):

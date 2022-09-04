@@ -1,21 +1,20 @@
-import csv, sys
 from pyforms_gui.basewidget import BaseWidget
-from pyforms_gui.controls.control_progress import ControlProgress
 from pyforms_gui.controls.control_button import ControlButton
 from pyforms_gui.controls.control_list import ControlList
-from pyforms_gui.controls.control_number import ControlNumber
-from pyforms_gui.controls.control_slider import ControlSlider
 from pyforms_gui.controls.control_textarea import ControlTextArea
 from pyforms_gui.controls.control_text import ControlText
-from pyforms_gui.controls.control_number import ControlNumber
-from pyforms_gui.controls.control_label import ControlLabel
 import traceback
-import time
-import datetime
 
-from confapp import conf
-from AnyQt.QtWidgets import QMessageBox
+from PyQt5.QtWidgets import QMessageBox
+import traceback
 
+from PyQt5.QtWidgets import QMessageBox
+
+from pyforms_gui.basewidget import BaseWidget
+from pyforms_gui.controls.control_button import ControlButton
+from pyforms_gui.controls.control_list import ControlList
+from pyforms_gui.controls.control_text import ControlText
+from pyforms_gui.controls.control_textarea import ControlTextArea
 
 
 class GraphsEventsGenerator(BaseWidget):

@@ -1,6 +1,6 @@
-from pyforms.basewidget import BaseWidget
-from pyforms.controls import ControlText
 from pybpodgui_api.models.user import User
+from pyforms_gui.basewidget import BaseWidget
+from pyforms_gui.controls.control_text import ControlText
 
 
 class UserWindow(User, BaseWidget):

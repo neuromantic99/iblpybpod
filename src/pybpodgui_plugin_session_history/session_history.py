@@ -1,6 +1,3 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 """ session_window.py
 
 """
@@ -8,16 +5,14 @@
 import logging
 
 import numpy as np
-from AnyQt.QtCore import (QAbstractTableModel, QSize, Qt, QTimer,
-                          pyqtSignal)
-from AnyQt.QtGui import QBrush, QColor
-from PyQt5.QtWidgets import QHeaderView
-from confapp import conf
-from PyQt5.uic.Compiler.qtproxies import QtWidgets
+from PyQt5.QtCore import QAbstractTableModel, QSize, Qt, QTimer
+from PyQt5.QtGui import QBrush, QColor
 
+import pybpodgui_plugin_session_history.settings as conf
 from pybpodapi.session import Session
-from pyforms.basewidget import BaseWidget
-from pyforms.controls import ControlCheckBox, ControlTableView
+from pyforms_gui.basewidget import BaseWidget
+from pyforms_gui.controls.control_checkbox import ControlCheckBox
+from pyforms_gui.controls.control_tableview import ControlTableView
 
 logger = logging.getLogger(__name__)
 

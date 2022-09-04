@@ -3,12 +3,13 @@ import logging
 import sys
 import traceback
 
-from AnyQt import QtCore
-from AnyQt.QtWidgets import QFileDialog
-from pyforms.controls import ControlButton
-from pyforms.controls import ControlList
-from pyforms.controls import ControlText
-from pyforms.gui.basewidget import BaseWidget
+from PyQt5 import QtCore
+from PyQt5.QtWidgets import QFileDialog
+
+from pyforms_gui.basewidget import BaseWidget
+from pyforms_gui.controls.control_button import ControlButton
+from pyforms_gui.controls.control_list import ControlList
+from pyforms_gui.controls.control_text import ControlText
 
 logger = logging.getLogger(__name__)
 

@@ -1,26 +1,11 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 """ pycontrolgui_plugin_timeline.trials_plot"""
-from pyforms.controls import ControlImage
-from pyforms.controls import ControlCombo
-from pyforms.basewidget import BaseWidget
-
-from pybpodapi.com.messaging.state_occurrence import StateOccurrence
-from pybpodapi.com.messaging.event_occurrence import EventOccurrence
-from pybpodapi.com.messaging.event_resume import EventResume
-from pybpodapi.com.messaging.session_info import SessionInfo
-from pybpodgui_api.exceptions.run_setup import RunSetupError
+from pyforms_gui.controls.control_image import ControlImage
+from pyforms_gui.controls.control_combo import ControlCombo
+from pyforms_gui.basewidget import BaseWidget
 
 import logging
 import math
 import pydot
-
-from datetime import datetime as datetime_now
-
-from confapp import conf
-
-from AnyQt.QtCore import QTimer, QEventLoop
 
 logger = logging.getLogger(__name__)
 

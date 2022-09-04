@@ -1,15 +1,11 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 import logging
 
-import pyforms as app
-from pybpodgui_plugin.models.setup import Setup
-from pyforms.basewidget import BaseWidget
-from pyforms.controls import ControlText
-from pyforms.controls import ControlButton
 from pybpodgui_api.models.experiment import Experiment
 from pybpodgui_api.models.project import Project
+from pybpodgui_plugin.models.setup import Setup
+from pyforms_gui.basewidget import BaseWidget
+from pyforms_gui.controls.control_button import ControlButton
+from pyforms_gui.controls.control_text import ControlText
 
 logger = logging.getLogger(__name__)
 
@@ -105,4 +101,5 @@ class ExperimentWindow(Experiment, BaseWidget):
 
 if __name__ == "__main__":
     # Execute the application
-    app.start_app(ExperimentWindow)
+    from pyforms_gui.appmanager import start_app
+    start_app(ExperimentWindow)

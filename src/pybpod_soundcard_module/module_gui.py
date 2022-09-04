@@ -1,23 +1,22 @@
 import os
 import tempfile
 
-import pyforms
-from pyforms_gui.controls.control_checkbox import ControlCheckBox
-from pyforms_gui.controls.control_textarea import ControlTextArea
-from scipy.io import wavfile
 import numpy as np
-from AnyQt import QtGui
-from AnyQt.QtWidgets import QFileDialog, QStatusBar
-from confapp import conf
+from PyQt5 import QtGui
+from PyQt5.QtWidgets import QFileDialog, QStatusBar
+from scipy.io import wavfile
+
+import pybpodgui_plugin.resources as conf
 from pybpod_soundcard_module.utils.generate_sound import generate_sound, WindowConfiguration
 from pyforms_gui.basewidget import BaseWidget
 from pyforms_gui.controls.control_button import ControlButton
+from pyforms_gui.controls.control_checkbox import ControlCheckBox
 from pyforms_gui.controls.control_combo import ControlCombo
 from pyforms_gui.controls.control_emptywidget import ControlEmptyWidget
 from pyforms_gui.controls.control_label import ControlLabel
 from pyforms_gui.controls.control_number import ControlNumber
 from pyforms_gui.controls.control_text import ControlText
-
+from pyforms_gui.controls.control_textarea import ControlTextArea
 from .module_api import SoundCardModule, SampleRate, DataType
 
 
@@ -439,4 +438,5 @@ class SoundCardModuleGUI(SoundCardModule, BaseWidget):
 
 
 if __name__ == '__main__':
-    pyforms.start_app(SoundCardModuleGUI, geometry=(0, 0, 600, 500))
+    from pyforms_gui.appmanager import start_app
+    start_app(SoundCardModuleGUI, geometry=(0, 0, 600, 500))

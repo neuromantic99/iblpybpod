@@ -4,11 +4,12 @@ import xmlrpc.client
 from importlib import reload
 
 import pkg_resources
-from pyforms.controls import ControlButton
-from pyforms.controls import ControlCombo
-from pyforms.controls import ControlLabel
-from pyforms.controls import ControlTextArea
-from pyforms.gui.basewidget import BaseWidget
+
+from pyforms_gui.basewidget import BaseWidget
+from pyforms_gui.controls.control_button import ControlButton
+from pyforms_gui.controls.control_combo import ControlCombo
+from pyforms_gui.controls.control_label import ControlLabel
+from pyforms_gui.controls.control_textarea import ControlTextArea
 
 
 class PackageWindow(BaseWidget):
@@ -84,7 +85,6 @@ class PackageWindow(BaseWidget):
         return dist
 
 
-
     def get_pypi_distribution(self, name):
 
         new_version = self.pypi.package_releases(name)
@@ -99,7 +99,6 @@ class PackageWindow(BaseWidget):
 
 
         return new_version, all_versions, data.get('summary', '')
-
 
 
     def __install_btn_evt(self):

@@ -1,46 +1,25 @@
-import logging
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-import random
 import traceback
 
-from confapp import conf
+import numpy as np
+from PyQt5.QtCore import QTimer
+from matplotlib import colors as mcolors
 
-from pyforms.basewidget import BaseWidget
-from pyforms.controls import ControlProgress
-from pyforms.controls import ControlButton
-from pyforms.controls import ControlCheckBox
-from pyforms.controls import ControlList
-from pyforms.controls import ControlBoundingSlider
-from pyforms.controls import ControlMatplotlib
-from AnyQt.QtWidgets import QApplication
-from AnyQt.QtGui import QColor, QBrush
-from AnyQt.QtCore import QTimer, QEventLoop, QAbstractTableModel, Qt, QSize, QVariant, pyqtSignal
-
-#######################################################################
-##### MESSAGES TYPES ##################################################
-#######################################################################
-from pybpodapi.com.messaging.error   import ErrorMessage
-from pybpodapi.com.messaging.debug   import DebugMessage
-from pybpodapi.com.messaging.stderr  import StderrMessage
-from pybpodapi.com.messaging.stdout  import StdoutMessage
-from pybpodapi.com.messaging.warning import WarningMessage
-from pybpodapi.com.messaging.parser  import MessageParser
-
-from pybpodapi.com.messaging.trial                  import Trial
-from pybpodapi.com.messaging.end_trial              import EndTrial
-from pybpodapi.com.messaging.event_occurrence       import EventOccurrence
-from pybpodapi.com.messaging.state_occurrence       import StateOccurrence
-from pybpodapi.com.messaging.softcode_occurrence    import SoftcodeOccurrence
-from pybpodapi.com.messaging.event_resume           import EventResume
-from pybpodapi.com.messaging.session_info           import SessionInfo
+import pybpodgui_plugin_trial_timeline.settings as conf
+from pybpodapi.com.messaging.end_trial import EndTrial
+from pybpodapi.com.messaging.session_info import SessionInfo
+from pybpodapi.com.messaging.state_occurrence import StateOccurrence
 #######################################################################
 #######################################################################
 from pybpodapi.session import Session as APISession
 from pybpodgui_api.models.session import Session
+from pyforms_gui.basewidget import BaseWidget
+from pyforms_gui.controls.control_button import ControlButton
+from pyforms_gui.controls.control_matplotlib import ControlMatplotlib
 
-from matplotlib import colors as mcolors
+
+#######################################################################
+##### MESSAGES TYPES ##################################################
+#######################################################################
 
 class TrialTimeline(BaseWidget):
 

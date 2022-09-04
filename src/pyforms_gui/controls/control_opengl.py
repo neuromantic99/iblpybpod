@@ -1,41 +1,17 @@
-# !/usr/bin/python
-# -*- coding: utf-8 -*-
-
 import logging
 
-from confapp import conf
-
-logger = logging.getLogger(__name__)
+from OpenGL.GL import *
+from OpenGL.GLU import *
+from PyQt5.QtWidgets import QSizePolicy
 
 from pyforms_gui.controls.control_base import ControlBase
 
-from AnyQt.QtWidgets import QSizePolicy
+logger = logging.getLogger(__name__)
 
-from AnyQt import _api
-
-from OpenGL.GL  import *
-from OpenGL.GLU import *
-        
-from AnyQt import _api
-if _api.USED_API == _api.QT_API_PYQT5:
-    try:
-        from AnyQt.QtOpenGL import QGLWidget
-    except:
-        logger.debug("No OpenGL library available")
-
-    import platform
-    if platform.system() == 'Darwin':
-        from pyforms_gui.controls.control_player.VideoQt5GLWidget import VideoQt5GLWidget as VideoGLWidget
-    else:
-        from pyforms_gui.controls.control_player.VideoGLWidget import VideoGLWidget
-
-elif _api.USED_API == _api.QT_API_PYQT4:
-    try:
-        from PyQt4.QtOpenGL import QGLWidget
-    except:
-        logger.debug("No OpenGL library available")
-
-    from pyforms_gui.controls.control_player.VideoGLWidget import VideoGLWidget
+try:
+    from PyQt5.QtOpenGL import QGLWidget
+except:
+    logger.debug("No OpenGL library available")
 
 
 class OpenglGLWidget(QGLWidget):
@@ -145,12 +121,8 @@ class OpenglGLWidget(QGLWidget):
         
         :param event: 
         """
-        if _api.USED_API == _api.QT_API_PYQT5:
-            p = event.angleDelta()
-            delta = p.y()
-        elif _api.USED_API == _api.QT_API_PYQT4:
-            delta = event.delta()
-        
+        p = event.angleDelta()
+        delta = p.y()
         
         if delta < 0:
             self._zoom += 1

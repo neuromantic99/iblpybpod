@@ -1,14 +1,12 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
 import logging
-import inspect
-from confapp import conf
 
-from AnyQt.QtGui import QIcon
-from AnyQt import QtCore
+from PyQt5 import QtCore
+from PyQt5.QtGui import QIcon
 
-from pybpodgui_plugin.models.subject.subject_window import SubjectWindow
+import pybpodgui_plugin.resources as pybpodgui_conf
+import pyforms_generic_editor.resources as pyforms_conf
 from pybpodgui_plugin.models.session import Session
+from pybpodgui_plugin.models.subject.subject_window import SubjectWindow
 
 logger = logging.getLogger(__name__)
 
@@ -32,7 +30,7 @@ class SubjectTreeNode(SubjectWindow):
 
     def __init__(self, project):
         SubjectWindow.__init__(self, project)
-        self.__running_icon = QIcon(conf.PLAY_SMALL_ICON)
+        self.__running_icon = QIcon(pyforms_conf.PLAY_SMALL_ICON)
         self.create_treenode(self.tree)
 
     def create_treenode(self, tree):
@@ -53,12 +51,12 @@ class SubjectTreeNode(SubjectWindow):
         :return: new created node
         :return type: QTreeWidgetItem
         """
-        self.node = tree.create_child(self.name, self.project.subjects_node, icon=QIcon(conf.SUBJECT_SMALL_ICON))
+        self.node = tree.create_child(self.name, self.project.subjects_node, icon=QIcon(pybpodgui_conf.SUBJECT_SMALL_ICON))
         self.node.key_pressed_event = self.node_key_pressed_event
         self.node.window = self
         self.node.setExpanded(True)
 
-        tree.add_popup_menu_option('Remove', self.remove, item=self.node, icon=QIcon(conf.REMOVE_SMALL_ICON))
+        tree.add_popup_menu_option('Remove', self.remove, item=self.node, icon=QIcon(pyforms_conf.REMOVE_SMALL_ICON))
         return self.node
 
     def remove(self, silent=False):
@@ -100,7 +98,7 @@ class SubjectTreeNode(SubjectWindow):
             # add another node to the UI
             node = self.create_sessiontreenode(session)
             session.subjects_nodes[id(self.node)] = node
-            self.tree.add_popup_menu_option('Remove', session.remove, item=node, icon=QIcon(conf.REMOVE_SMALL_ICON))
+            self.tree.add_popup_menu_option('Remove', session.remove, item=node, icon=QIcon(pyforms_conf.REMOVE_SMALL_ICON))
         return super(SubjectTreeNode, self).__add__(session)
 
     def __sub__(self, value):

@@ -1,12 +1,4 @@
-# !/usr/bin/python
-# -*- coding: utf-8 -*-
-
 import logging
-
-from confapp import conf
-
-from AnyQt.QtGui import QIcon
-from pyforms.controls import ControlTree
 
 from pybpodgui_plugin_trial_timeline.trial_timeline import TrialTimeline
 
@@ -65,5 +57,3 @@ class SessionTreeNode(object):
         super(SessionTreeNode, self.__class__).name.fset(self, value)
         if hasattr(self, 'trialsplot_win'):
             self.trialsplot_win.title = value 
-    
-

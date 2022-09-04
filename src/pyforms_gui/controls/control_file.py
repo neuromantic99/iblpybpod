@@ -1,14 +1,9 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
-from confapp                      import conf
-from pyforms_gui.controls.control_base import ControlBase
+from PyQt5 import uic
+from PyQt5.QtWidgets import QFileDialog
+import pyforms_gui.settings as conf
 
 import pyforms_gui.utils.tools as tools
-
-
-from AnyQt           import uic, _api
-from AnyQt.QtWidgets import QFileDialog
+from pyforms_gui.controls.control_base import ControlBase
 
 
 class ControlFile(ControlBase):
@@ -42,12 +37,7 @@ class ControlFile(ControlBase):
             else:
                 value = QFileDialog.getOpenFileName(self.parent, self._label, self.value)
 
-
-        if _api.USED_API == _api.QT_API_PYQT5:
-            value = value[0]
-        elif _api.USED_API == _api.QT_API_PYQT4:
-            value = str(value)
-
+        value = value[0]
         if value and len(value)>0: self.value = value
 
 

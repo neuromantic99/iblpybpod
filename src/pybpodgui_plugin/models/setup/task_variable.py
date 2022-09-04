@@ -1,8 +1,5 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 from pybpodgui_api.models.setup.task_variable import TaskVariable
-from pyforms.controls import ControlCombo
+from pyforms_gui.controls.control_combo import ControlCombo
 
 
 class TaskVariableWindow(TaskVariable):
