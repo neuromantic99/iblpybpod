@@ -1,8 +1,9 @@
 import logging
 
-from PyQt5.QtGui import QIcon
+from confapp import conf
 
-import pybpodgui_plugin_session_history.settings as conf
+from AnyQt.QtGui import QIcon
+from pybpodgui_plugin_session_history.session_history import SessionHistory
 
 logger = logging.getLogger(__name__)
 

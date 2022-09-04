@@ -1,6 +1,11 @@
-from PyQt5 import uic
-from PyQt5.QtWidgets import QPushButton, QSizePolicy
-from PyQt5.QtGui import QIcon
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+from confapp import conf
+
+from AnyQt           import uic
+from AnyQt.QtWidgets import QPushButton, QSizePolicy
+from AnyQt.QtGui     import QIcon
 
 from pyforms_gui.controls.control_base import ControlBase
 

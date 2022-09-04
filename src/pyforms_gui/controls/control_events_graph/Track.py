@@ -1,7 +1,8 @@
+# !/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import bisect
-
-from PyQt5.QtGui import QColor
-
+from AnyQt.QtGui import QColor
 
 class Track(object):
 	"""

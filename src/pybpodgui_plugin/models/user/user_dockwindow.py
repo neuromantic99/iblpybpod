@@ -1,5 +1,4 @@
 import logging
-
 from pybpodgui_plugin.models.user.user_treenode import UserTreeNode
 
 logger = logging.getLogger(__name__)
@@ -29,8 +28,7 @@ class UserDockWindow(UserTreeNode):
                 self.mainwindow.mdi_area -= self._code_editor
             super(UserDockWindow, self).remove()
 
-    def close(self, silent=False):
-        # Created silent arg based on src/pybpodgui_plugin/models/project/project_dockwindow.py "example"
+    def close(self):
         self.mainWindow.details.value = None
         super(UserDockWindow, self).close(silent)
 

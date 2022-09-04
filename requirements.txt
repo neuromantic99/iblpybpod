@@ -1,11 +1,10 @@
 aenum
-logging-bootstrap
 markdown2
 matplotlib
 numpy
 ONE-api
 # opencv-python
-opencv-python==4.3.0.36  # locking it down may just be necessary on dev box
+opencv-python==4.3.0.36  # locking down may just be necessary on dev box
 pydot
 PyOpenGL
 PyQt5

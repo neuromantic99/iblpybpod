@@ -1,7 +1,8 @@
-from PyQt5.QtGui import QColor
+# !/usr/bin/python
+# -*- coding: utf-8 -*-
 
+from AnyQt.QtGui import QColor
 from .win_event import EventWindow
-
 
 class Event(object):
 	"""

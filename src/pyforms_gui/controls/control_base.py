@@ -1,7 +1,11 @@
-from PyQt5 import QtCore
-from PyQt5.QtGui import QIcon, QKeySequence
-from PyQt5.QtWidgets import QMenu, QAction
+# !/usr/bin/python
+# -*- coding: utf-8 -*-
 
+from confapp      import conf
+
+from AnyQt           import QtCore, uic
+from AnyQt.QtWidgets import QMenu, QAction
+from AnyQt.QtGui     import QIcon, QKeySequence
 
 class ControlBase(object):
     """

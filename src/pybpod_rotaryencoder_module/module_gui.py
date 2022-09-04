@@ -1,20 +1,16 @@
-from datetime import datetime as datetime_now
-
+import pyforms
 import serial
-from PyQt5 import QtGui
-from PyQt5.QtCore import QTimer
-from PyQt5.QtWidgets import QFileDialog
-from sca.formats import csv
-
-import pybpodgui_plugin.resources as conf
+from pyforms.basewidget import BaseWidget
+from pyforms.controls import ControlText, ControlCheckBox, ControlNumber, ControlButton, ControlCombo
+from pyforms.controls import ControlMatplotlib
 from pybpod_rotaryencoder_module.module_api import RotaryEncoderModule
-from pyforms_gui.basewidget import BaseWidget
-from pyforms_gui.controls.control_button import ControlButton
-from pyforms_gui.controls.control_checkbox import ControlCheckBox
-from pyforms_gui.controls.control_combo import ControlCombo
-from pyforms_gui.controls.control_matplotlib import ControlMatplotlib
-from pyforms_gui.controls.control_number import ControlNumber
-from pyforms_gui.controls.control_text import ControlText
+from sca.formats import csv
+from datetime import datetime as datetime_now
+from confapp import conf
+
+from AnyQt import QtGui
+from AnyQt.QtCore import QTimer
+from AnyQt.QtWidgets import QFileDialog
 
 
 class RotaryEncoderModuleGUI(RotaryEncoderModule, BaseWidget):
@@ -280,5 +276,4 @@ class RotaryEncoderModuleGUI(RotaryEncoderModule, BaseWidget):
 
 
 if __name__ == '__main__':
-    from pyforms_gui.appmanager import start_app
-    start_app(RotaryEncoderModuleGUI, geometry=(0, 0, 600, 500))
+    pyforms.start_app(RotaryEncoderModuleGUI, geometry=(0, 0, 600, 500))

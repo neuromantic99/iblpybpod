@@ -1,6 +1,11 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import logging
 
-from PyQt5.QtWidgets import QMdiArea, QMdiSubWindow
+from confapp import conf
+
+from AnyQt.QtWidgets import QMdiArea, QMdiSubWindow
 
 from pyforms_gui.controls.control_base import ControlBase
 
@@ -77,9 +82,9 @@ class ControlMdiArea(ControlBase, QMdiArea):
 
 		try:
 			window = self.activeSubWindow()
-			widget = window.widget()
 
 			if window:
+				widget = window.widget()
 				# self.removeSubWindow(window) DO NOT REMOVE TO KEEP WINDOW POSITION
 				widget.before_close_event()
 			else:

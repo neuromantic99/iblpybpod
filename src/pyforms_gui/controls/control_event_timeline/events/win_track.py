@@ -1,7 +1,13 @@
-from PyQt5 import QtCore
-from PyQt5 import uic
-from PyQt5.QtGui import QColor, QPixmap, QFont, QPainter
-from PyQt5.QtWidgets import QDialog, QInputDialog, QColorDialog
+# !/usr/bin/python
+# -*- coding: utf-8 -*-
+
+from confapp import conf
+
+from AnyQt.QtWidgets import QDialog, QInputDialog, QColorDialog
+from AnyQt.QtGui import QColor, QPixmap, QFont, QPainter
+from AnyQt import uic
+from AnyQt import QtCore
+
 
 import pyforms_gui.utils.tools as tools
 

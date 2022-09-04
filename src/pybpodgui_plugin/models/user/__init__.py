@@ -1,4 +1,4 @@
-import pyforms_generic_editor.settings as conf
+from confapp import conf
 from pybpodgui_plugin.models.user.user_dockwindow import UserDockWindow
 
 User = type(

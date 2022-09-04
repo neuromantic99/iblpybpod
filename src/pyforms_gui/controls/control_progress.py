@@ -1,10 +1,10 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import os
-
-from PyQt5 import uic
-from PyQt5.QtWidgets import QApplication
-
 from pyforms_gui.controls.control_base import ControlBase
-
+from AnyQt           import uic
+from AnyQt.QtWidgets import QApplication
 
 class ControlProgress(ControlBase):
 

@@ -1,9 +1,12 @@
+# !/usr/bin/python3
+# -*- coding: utf-8 -*-
+
 import logging
 
-from PyQt5.QtGui import QIcon
+from confapp import conf
 
-import pybpodgui_plugin.resources as pybpodgui_conf
-import pyforms_generic_editor.resources as pyforms_conf
+from AnyQt.QtGui import QIcon
+
 from pybpodgui_api.models.setup import Setup
 from pybpodgui_plugin.models.setup.setup_com import SetupCom
 
@@ -53,7 +56,7 @@ class SetupUIBusy(SetupCom):
 
         if self.status == Setup.STATUS_READY:
 
-            self.node.setIcon(0, QIcon(pybpodgui_conf.BOX_SMALL_ICON))
+            self.node.setIcon(0, QIcon(conf.BOX_SMALL_ICON))
 
             self._run_task_btn.label = 'Run'
             self._run_task_btn.checked = False
@@ -72,7 +75,7 @@ class SetupUIBusy(SetupCom):
 
         elif self.status == Setup.STATUS_BOARD_LOCKED:
 
-            self.node.setIcon(0, QIcon(pyforms_conf.BUSY_SMALL_ICON))
+            self.node.setIcon(0, QIcon(conf.BUSY_SMALL_ICON))
             # self.disable_all_task_buttons()
             self._board.enabled = False
             self._task.enabled = False
@@ -87,7 +90,7 @@ class SetupUIBusy(SetupCom):
             self._stoptrial_btn.enabled = True
             self._pause_btn.enabled = True
 
-            self.node.setIcon(0, QIcon(pyforms_conf.PLAY_SMALL_ICON))
+            self.node.setIcon(0, QIcon(conf.PLAY_SMALL_ICON))
             # self.disable_all_task_buttons()
             self._board.enabled = False
             self._task.enabled = False

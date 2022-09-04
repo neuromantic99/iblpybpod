@@ -1,15 +1,23 @@
-import io
-import logging
-import sys
-import traceback
+# !/usr/bin/python3
+# -*- coding: utf-8 -*-
 
-from PyQt5 import QtCore
-from PyQt5.QtWidgets import QFileDialog
+""" session_window.py
 
-from pyforms_gui.basewidget import BaseWidget
-from pyforms_gui.controls.control_button import ControlButton
-from pyforms_gui.controls.control_list import ControlList
-from pyforms_gui.controls.control_text import ControlText
+"""
+
+import logging, sys, io, traceback
+from confapp import conf
+from pyforms.basewidget import BaseWidget
+from pyforms.controls import ControlButton
+from pyforms.controls import ControlText
+from pyforms.controls import ControlTextArea
+from pyforms.controls import ControlList
+
+from confapp import conf
+
+from AnyQt import QtCore
+from AnyQt.QtWidgets import QFileDialog
+
 
 logger = logging.getLogger(__name__)
 

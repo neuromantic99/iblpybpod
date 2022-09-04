@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """ pyforms_gui.controls.ControlPlayer.VideoGLWidget
 
 """
@@ -9,13 +12,16 @@ __maintainer__  = "Ricardo Ribeiro"
 __email__       = "ricardojvr@gmail.com"
 __status__      = "Development"
 
-import OpenGL.GL as GL
+import logging
+
+from confapp     import conf
+from AnyQt           import QtGui, QtCore, _api
+from AnyQt.QtWidgets import QApplication
+
+import OpenGL.GL  as GL
 import OpenGL.GLU as GLU
-from PyQt5 import QtGui, QtCore
-from PyQt5.QtWidgets import QApplication
 
-import pyforms_gui.settings as conf
-
+ 
 try:
     import cv2
 except:
@@ -348,8 +354,11 @@ class AbstractGLWidget(object):
             self._mouseX = event.x()
             self._mouseY = event.y()
 
-            p = event.angleDelta()
-            delta = p.y()
+            if _api.USED_API == _api.QT_API_PYQT5:
+                p = event.angleDelta()
+                delta = p.y()
+            elif _api.USED_API == _api.QT_API_PYQT4:
+                delta = event.delta()
         
             zoom_factor = delta / float(1500)
 

@@ -1,8 +1,10 @@
+# !/usr/bin/python3
+# -*- coding: utf-8 -*-
+
 import logging
 
-import pybpodgui_plugin.resources as pybpodgui_conf
-import pyforms_generic_editor.resources as pyforms_conf
-from PyQt5.QtGui import QIcon
+from confapp import conf
+from AnyQt.QtGui import QIcon
 from pybpodgui_plugin.models.board import Board
 from pybpodgui_plugin.models.project.project_dockwindow import ProjectDockWindow
 
@@ -32,17 +34,17 @@ class ProjectUIBusy(ProjectDockWindow):
 
         if busy_status == Board.STATUS_READY:
 
-            self.node.setIcon(0, QIcon(pyforms_conf.PROJECT_SMALL_ICON))
-            self.experiments_node.setIcon(0, QIcon(pybpodgui_conf.EXPERIMENTS_SMALL_ICON))
-            self.boards_node.setIcon(0, QIcon(pybpodgui_conf.BOARDS_SMALL_ICON))
-            self.subjects_node.setIcon(0, QIcon(pybpodgui_conf.SUBJECTS_SMALL_ICON))
+            self.node.setIcon(0, QIcon(conf.PROJECT_SMALL_ICON))
+            self.experiments_node.setIcon(0, QIcon(conf.EXPERIMENTS_SMALL_ICON))
+            self.boards_node.setIcon(0, QIcon(conf.BOARDS_SMALL_ICON))
+            self.subjects_node.setIcon(0, QIcon(conf.SUBJECTS_SMALL_ICON))
 
         elif busy_status in [Board.STATUS_RUNNING_TASK]:
 
-            self.node.setIcon(0, QIcon(pyforms_conf.PLAY_SMALL_ICON))
-            self.experiments_node.setIcon(0, QIcon(pyforms_conf.PLAY_SMALL_ICON))
-            self.boards_node.setIcon(0, QIcon(pyforms_conf.PLAY_SMALL_ICON))
-            self.subjects_node.setIcon(0, QIcon(pyforms_conf.PLAY_SMALL_ICON))
+            self.node.setIcon(0, QIcon(conf.PLAY_SMALL_ICON))
+            self.experiments_node.setIcon(0, QIcon(conf.PLAY_SMALL_ICON))
+            self.boards_node.setIcon(0, QIcon(conf.PLAY_SMALL_ICON))
+            self.subjects_node.setIcon(0, QIcon(conf.PLAY_SMALL_ICON))
             # Flag this true so we can disable 'Run' buttons
             sessionrunning = True
 

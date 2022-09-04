@@ -1,6 +1,9 @@
+# !/usr/bin/python3
+# -*- coding: utf-8 -*-
+
 import logging
 
-import pybpodapi.settings as conf
+from confapp import conf as settings
 from pybpodapi.bpod.bpod_base import BpodBase
 from pybpodapi.bpod.hardware.channels import ChannelType
 from pybpodapi.bpod_modules.bpod_module import BpodModule
@@ -251,13 +254,13 @@ class BpodCOMProtocol(BpodBase):
         hardware.inputs_enabled = [0] * len(hardware.inputs)
 
         for j, i in enumerate(hardware.bnc_inputports_indexes):
-            hardware.inputs_enabled[i] = conf.BPOD_BNC_PORTS_ENABLED[j]
+            hardware.inputs_enabled[i] = settings.BPOD_BNC_PORTS_ENABLED[j]
 
         for j, i in enumerate(hardware.wired_inputports_indexes):
-            hardware.inputs_enabled[i] = conf.BPOD_WIRED_PORTS_ENABLED[j]
+            hardware.inputs_enabled[i] = settings.BPOD_WIRED_PORTS_ENABLED[j]
 
         for j, i in enumerate(hardware.behavior_inputports_indexes):
-            hardware.inputs_enabled[i] = conf.BPOD_BEHAVIOR_PORTS_ENABLED[j]
+            hardware.inputs_enabled[i] = settings.BPOD_BEHAVIOR_PORTS_ENABLED[j]
         #############################################################################################
 
         logger.debug("Requesting ports enabling (%s)", SendMessageHeader.ENABLE_PORTS)

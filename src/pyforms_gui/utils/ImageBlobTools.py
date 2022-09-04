@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 __author__      = "Ricardo Ribeiro"
 __credits__     = ["Ricardo Ribeiro"]
 __license__     = "MIT"
@@ -6,11 +9,9 @@ __maintainer__  = "Ricardo Ribeiro"
 __email__       = "ricardojvr@gmail.com"
 __status__      = "Development"
 
-import cv2
+
 from numpy import *
-
-from tools import getTranslationMatrix2d
-
+import cv2, math
 
 def biggestContour(contours, howmany=1):
     biggest = []

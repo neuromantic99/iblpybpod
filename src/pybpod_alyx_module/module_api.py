@@ -1,6 +1,5 @@
-from one.webclient import AlyxClient
-
-import pybpod_alyx_module.settings as conf
+from oneibl.webclient import AlyxClient
+from confapp import conf
 
 
 class AlyxModule(object):

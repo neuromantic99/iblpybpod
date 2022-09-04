@@ -1,3 +1,7 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+
 __author__      = "Ricardo Ribeiro"
 __credits__     = ["Ricardo Ribeiro"]
 __license__     = "MIT"
@@ -6,13 +10,18 @@ __maintainer__  = "Ricardo Ribeiro"
 __email__       = "ricardojvr@gmail.com"
 __status__      = "Development"
 
-from PyQt5.QtCore import QMargins
-from PyQt5.QtWidgets import QWidget, QVBoxLayout
+from AnyQt.QtCore import QMargins
+from AnyQt.QtWidgets import QWidget, QVBoxLayout
 from pyforms_gui.controls.control_base import ControlBase
 from matplotlib.figure import Figure
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
+from AnyQt import _api
 
+if _api.USED_API == _api.QT_API_PYQT5:
+    from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+    from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
+elif _api.USED_API == _api.QT_API_PYQT4:
+    from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
+    from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
 
 class ControlMatplotlib(ControlBase, QWidget):
 

@@ -1,5 +1,7 @@
+# !/usr/bin/python3
+# -*- coding: utf-8 -*-
+from confapp import conf
 import loggingbootstrap
-from pybpodapi import settings as conf
 
 __version__ = "1.8.2"
 __author__ = [
@@ -28,8 +30,12 @@ __status__ = "Development"
 # load the user settings
 try:
     import user_settings
+
+    conf += user_settings
 except:
     pass
+
+conf += "pybpodapi.settings"
 
 if conf.PYBPOD_API_LOG_LEVEL is not None:
     # setup different loggers for example script and api

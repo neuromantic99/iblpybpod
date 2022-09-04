@@ -1,15 +1,27 @@
-import subprocess
-import sys
-import xmlrpc.client
+from pyforms.basewidget import BaseWidget
+from pyforms.controls   import ControlLabel
+from pyforms.controls   import ControlText
+from pyforms.controls   import ControlList
+from pyforms.controls   import ControlButton
+from pyforms.controls   import ControlProgress
+from pyforms.controls   import ControlTextArea
+from pyforms.controls   import ControlCombo
+from pyforms.controls   import ControlWeb
+
+from AnyQt.QtWidgets import QApplication
+from AnyQt.QtCore import QTimer
+
+from confapp import conf
+
 from importlib import reload
 
+import yaml
+import sys
+import subprocess
+import xmlrpc.client
 import pkg_resources
+import datetime
 
-from pyforms_gui.basewidget import BaseWidget
-from pyforms_gui.controls.control_button import ControlButton
-from pyforms_gui.controls.control_combo import ControlCombo
-from pyforms_gui.controls.control_label import ControlLabel
-from pyforms_gui.controls.control_textarea import ControlTextArea
 
 
 class PackageWindow(BaseWidget):
@@ -85,6 +97,7 @@ class PackageWindow(BaseWidget):
         return dist
 
 
+
     def get_pypi_distribution(self, name):
 
         new_version = self.pypi.package_releases(name)
@@ -99,6 +112,7 @@ class PackageWindow(BaseWidget):
 
 
         return new_version, all_versions, data.get('summary', '')
+
 
 
     def __install_btn_evt(self):

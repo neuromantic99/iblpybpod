@@ -1,21 +1,30 @@
-import xmlrpc.client
+from pyforms.basewidget import BaseWidget
+from pyforms.controls   import ControlLabel
+from pyforms.controls   import ControlText
+from pyforms.controls   import ControlList
+from pyforms.controls   import ControlButton
+from pyforms.controls   import ControlProgress
+from pyforms.controls   import ControlTextArea
+from pyforms.controls   import ControlCombo
+from pyforms.controls   import ControlWeb
+
+from AnyQt.QtWidgets import QApplication
+from AnyQt.QtCore    import QTimer
+
+from .package_win    import PackageWindow
+
+from confapp import conf
+
 from importlib import reload
 
-import markdown2
-import pkg_resources
 import yaml
-from PyQt5.QtCore import QTimer
-from PyQt5.QtWidgets import QApplication
+import sys
+import subprocess
+import xmlrpc.client
+import pkg_resources
+import datetime
 
-import pybpodgui_plugin.settings as conf
-from pyforms_gui.basewidget import BaseWidget
-from pyforms_gui.controls.control_button import ControlButton
-from pyforms_gui.controls.control_combo import ControlCombo
-from pyforms_gui.controls.control_list import ControlList
-from pyforms_gui.controls.control_progress import ControlProgress
-from pyforms_gui.controls.control_text import ControlText
-from pyforms_gui.controls.control_web import ControlWeb
-from .package_win import PackageWindow
+import markdown2
 
 conf.PYBPOD_REPOSITORIES_TXT_LIST = '../../repositories.yml'
 

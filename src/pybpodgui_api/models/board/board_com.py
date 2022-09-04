@@ -1,20 +1,25 @@
-import csv
-import io
-import json
+# !/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+import traceback
 import logging
 import os
 import subprocess
+import io
 import sys
-import traceback
+import json
+import pandas as pd
+
+from confapp import conf
 from pathlib import Path
 
-import pandas as pd
-from sca.formats.csv import CSV_DELIMITER, CSV_QUOTECHAR, CSV_QUOTING
-
-import pybpodapi.settings as conf
 from pybpodapi.session import Session
 from pybpodapi.utils import date_parser
 from pybpodgui_api.models.board.board_io import BoardIO
+
+from sca.formats.csv import CSV_DELIMITER, CSV_QUOTECHAR, CSV_QUOTING
+import csv
+
 from .non_blockingcsvreader import NonBlockingCSVReader
 from .non_blockingstreamreader import NonBlockingStreamReader
 

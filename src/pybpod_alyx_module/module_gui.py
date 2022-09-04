@@ -1,13 +1,11 @@
-from PyQt5 import QtGui, QtCore
-from PyQt5.QtWidgets import QLineEdit
-
-import pybpod_alyx_module.settings as conf
+import pyforms
+from AnyQt import QtGui, QtCore
+from AnyQt.QtWidgets import QLineEdit
+from confapp import conf
 from pybpod_alyx_module.models.subject.alyx_subject import AlyxSubject
 from pybpod_alyx_module.module_api import AlyxModule
-from pyforms_gui.basewidget import BaseWidget
-from pyforms_gui.controls.control_button import ControlButton
-from pyforms_gui.controls.control_label import ControlLabel
-from pyforms_gui.controls.control_text import ControlText
+from pyforms.basewidget import BaseWidget
+from pyforms.controls import ControlText, ControlButton, ControlLabel
 
 
 class AlyxModuleGUI(AlyxModule, BaseWidget):
@@ -112,5 +110,4 @@ class AlyxModuleGUI(AlyxModule, BaseWidget):
 
 
 if __name__ == '__main__':
-    from pyforms_gui.appmanager import start_app
-    start_app(AlyxModuleGUI, geometry=(0, 0, 300, 300))
+    pyforms.start_app(AlyxModuleGUI, geometry=(0, 0, 300, 300))

@@ -1,13 +1,15 @@
-import logging
-import sys
-import traceback
-from importlib.util import find_spec
+# !/usr/bin/python
+# -*- coding: utf-8 -*-
 
 import loggingbootstrap
-
-import pyforms_generic_editor.settings as conf
+import logging
+import traceback
+import sys
+from importlib.util import find_spec
 
 try:
+	from confapp import conf
+
 	# Initiating logging for pyforms. It has to be initiated manually here because we don't know yet
 	# the logger filename as specified on settings
 	loggingbootstrap.create_double_logger("pyforms", logging.INFO, 'app.log', logging.INFO)
@@ -49,8 +51,8 @@ except Exception as err:
 
 
 def start():
-	from pyforms_gui import appmanager
-	appmanager.start_app(Editor, conf.GENERIC_EDITOR_WINDOW_GEOMETRY)
+	import pyforms
+	pyforms.start_app(Editor, conf.GENERIC_EDITOR_WINDOW_GEOMETRY)
 
 
 if __name__ == '__main__':

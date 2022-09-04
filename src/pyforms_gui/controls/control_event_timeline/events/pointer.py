@@ -1,5 +1,8 @@
-from PyQt5 import QtCore
-from PyQt5.QtGui import QColor
+# !/usr/bin/python
+# -*- coding: utf-8 -*-
+
+from AnyQt.QtGui import QColor
+from AnyQt import QtCore
 
 
 class Pointer(object):
