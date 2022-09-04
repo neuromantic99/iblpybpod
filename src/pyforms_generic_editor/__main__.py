@@ -3,15 +3,15 @@ import sys
 import traceback
 from importlib.util import find_spec
 
-import loggingbootstrap
-
 import pyforms_generic_editor.settings as conf
+
+logging.basicConfig(filename=conf.APP_LOG_FILENAME, level=conf.APP_LOG_HANDLER_CONSOLE_LEVEL)
 
 try:
 	# Initiating logging for pyforms. It has to be initiated manually here because we don't know yet
 	# the logger filename as specified on settings
-	loggingbootstrap.create_double_logger("pyforms", logging.INFO, 'app.log', logging.INFO)
-
+	# loggingbootstrap.create_double_logger("pyforms", logging.INFO, 'app.log', logging.INFO)
+	pass
 except ImportError as err:
 	logging.getLogger().critical(str(err), exc_info=True)
 	exit("Could not load pyforms! Is it installed?")
@@ -27,14 +27,14 @@ try:
 
 	import user_settings
 
-	conf += user_settings
-
-	loggingbootstrap.create_double_logger("pyforms_generic_editor", conf.APP_LOG_HANDLER_CONSOLE_LEVEL,
-	                                      conf.APP_LOG_FILENAME,
-	                                      conf.APP_LOG_HANDLER_FILE_LEVEL)
-
-	loggingbootstrap.create_double_logger("pyforms", conf.PYFORMS_LOG_HANDLER_CONSOLE_LEVEL, conf.APP_LOG_FILENAME,
-	                                      conf.PYFORMS_LOG_HANDLER_FILE_LEVEL)
+	# conf += user_settings
+	#
+	# loggingbootstrap.create_double_logger("pyforms_generic_editor", conf.APP_LOG_HANDLER_CONSOLE_LEVEL,
+	#                                       conf.APP_LOG_FILENAME,
+	#                                       conf.APP_LOG_HANDLER_FILE_LEVEL)
+	#
+	# loggingbootstrap.create_double_logger("pyforms", conf.PYFORMS_LOG_HANDLER_CONSOLE_LEVEL, conf.APP_LOG_FILENAME,
+	#                                       conf.PYFORMS_LOG_HANDLER_FILE_LEVEL)
 
 	# pyforms.controls is imported here first time
 	from pyforms_generic_editor.editor.base_editor import BaseEditor as Editor

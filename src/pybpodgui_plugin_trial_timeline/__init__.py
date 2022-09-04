@@ -1,4 +1,4 @@
-import loggingbootstrap
+import logging
 
 import pybpodgui_plugin.settings as conf
 
@@ -10,7 +10,4 @@ __maintainer__ = ["Sérgio Copeto", "Ricardo Ribeiro"]
 __email__ = ["ricardojvr@gmail.com"]
 __status__ = "Development"
 
-# setup different loggers but output to single file
-loggingbootstrap.create_double_logger("pybpodgui_plugin_trial_timeline", conf.APP_LOG_HANDLER_CONSOLE_LEVEL,
-									  conf.APP_LOG_FILENAME,
-									  conf.APP_LOG_HANDLER_FILE_LEVEL)
+logging.basicConfig(filename=conf.APP_LOG_FILENAME, level=conf.APP_LOG_HANDLER_CONSOLE_LEVEL)

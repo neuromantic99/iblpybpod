@@ -1,5 +1,4 @@
 aenum
-logging-bootstrap
 markdown2
 matplotlib
 numpy

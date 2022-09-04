@@ -7,9 +7,6 @@ class TestImports(unittest.TestCase):
         import pybpodapi
         assert pybpodapi
 
-        import loggingbootstrap
-        assert loggingbootstrap
-
         import sca
         assert sca
 

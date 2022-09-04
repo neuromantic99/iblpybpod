@@ -1,15 +1,9 @@
-import loggingbootstrap
+import logging
 
-from pybpodgui_plugin import settings as conf
+import pybpodgui_plugin.settings as conf
 from .stmdiagram_window import StmDiagramWindow
 
-# setup different loggers but output to single file
-loggingbootstrap.create_double_logger(
-	"pybpodgui_plugin_stmdiagram",
-	conf.APP_LOG_HANDLER_CONSOLE_LEVEL,
-	conf.APP_LOG_FILENAME,
-	conf.APP_LOG_HANDLER_FILE_LEVEL
-)
+logging.basicConfig(filename=conf.APP_LOG_FILENAME, level=conf.APP_LOG_HANDLER_CONSOLE_LEVEL)
 
 
 __version__ = "1.0.0"

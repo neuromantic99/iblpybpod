@@ -1,4 +1,5 @@
-import loggingbootstrap
+import logging
+
 from pybpodapi import settings as conf
 
 __version__ = "1.8.2"
@@ -32,10 +33,4 @@ except:
     pass
 
 if conf.PYBPOD_API_LOG_LEVEL is not None:
-    # setup different loggers for example script and api
-    loggingbootstrap.create_double_logger(
-        "pybpodapi",
-        conf.PYBPOD_API_LOG_LEVEL,
-        conf.PYBPOD_API_LOG_FILE,
-        conf.PYBPOD_API_LOG_LEVEL,
-    )
+    logging.basicConfig(filename=conf.PYBPOD_API_LOG_FILE, level=conf.PYBPOD_API_LOG_LEVEL)
