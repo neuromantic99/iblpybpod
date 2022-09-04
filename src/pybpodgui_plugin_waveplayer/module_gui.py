@@ -1,17 +1,17 @@
-import pyforms, numpy as np, traceback, math
-from pyforms.basewidget import BaseWidget
-from pyforms.controls import ControlLabel
-from pyforms.controls import ControlText
-from pyforms.controls import ControlButton
-from pyforms.controls import ControlCombo
-from pyforms.controls import ControlCheckBox
-from pyforms.controls import ControlFile
-from pyforms.controls import ControlList
-from pyforms.controls import ControlTextArea
-from pyforms.controls import ControlNumber
-from pyforms.controls import ControlMatplotlib
+import math
+import traceback
 
+import numpy as np
 
+from pyforms_gui.basewidget import BaseWidget
+from pyforms_gui.controls.control_button import ControlButton
+from pyforms_gui.controls.control_checkbox import ControlCheckBox
+from pyforms_gui.controls.control_combo import ControlCombo
+from pyforms_gui.controls.control_list import ControlList
+from pyforms_gui.controls.control_matplotlib import ControlMatplotlib
+from pyforms_gui.controls.control_number import ControlNumber
+from pyforms_gui.controls.control_text import ControlText
+from pyforms_gui.controls.control_textarea import ControlTextArea
 from .module_api import WavePlayerModule
 
 
@@ -300,4 +300,5 @@ class WavePlayerModuleGUI(WavePlayerModule, BaseWidget):
 
 
 if __name__=='__main__':
-    pyforms.start_app( WavePlayerModuleGUI, geometry=(2000,0,600,500) )
+    from pyforms_gui.appmanager import start_app
+    start_app(WavePlayerModuleGUI, geometry=(2000,0,600,500))

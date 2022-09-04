@@ -1,13 +1,14 @@
-from AnyQt import QtCore
-from pyforms.basewidget import BaseWidget
-from pyforms.controls import ControlText, ControlButton, ControlLabel
-from pybpod_alyx_module.module_api import AlyxModule
-from AnyQt.QtWidgets import QLineEdit
+from PyQt5 import QtCore
+from PyQt5.QtWidgets import QLineEdit
 
-from pybpodgui_api.models.project import Project
 from pybpod_alyx_module.models.subject.alyx_subject import AlyxSubject
-from pybpodgui_api.models.subject import Subject
+from pybpod_alyx_module.module_api import AlyxModule
 from pybpodgui_api.models.user import User
+from pyforms_gui.basewidget import BaseWidget
+from pyforms_gui.controls.control_button import ControlButton
+from pyforms_gui.controls.control_label import ControlLabel
+from pyforms_gui.controls.control_text import ControlText
+
 
 class UserWindow(User, AlyxModule, BaseWidget):
 

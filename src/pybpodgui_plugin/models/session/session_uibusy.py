@@ -1,10 +1,6 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
+from PyQt5.QtGui import QIcon
 
-from confapp import conf
-
-from AnyQt.QtGui import QIcon
-
+import pyforms_generic_editor.resources as conf
 from pybpodgui_api.models.setup import Setup
 from pybpodgui_plugin.models.session.session_signals import SessionSignals
 

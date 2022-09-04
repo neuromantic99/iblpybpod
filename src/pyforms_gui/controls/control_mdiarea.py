@@ -77,9 +77,9 @@ class ControlMdiArea(ControlBase, QMdiArea):
 
 		try:
 			window = self.activeSubWindow()
+			widget = window.widget()
 
 			if window:
-				widget = window.widget()
 				# self.removeSubWindow(window) DO NOT REMOVE TO KEEP WINDOW POSITION
 				widget.before_close_event()
 			else:

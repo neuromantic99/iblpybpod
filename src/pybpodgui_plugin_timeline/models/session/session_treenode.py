@@ -1,14 +1,8 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 import logging
 
-from confapp import conf
+from PyQt5.QtGui import QIcon
 
-from AnyQt.QtGui import QIcon
-
-from pyforms.controls import ControlTree
-
+import pybpodgui_plugin_timeline.settings as conf
 from pybpodgui_plugin_timeline.trials_plot_window import TrialsPlotWindow
 
 logger = logging.getLogger(__name__)

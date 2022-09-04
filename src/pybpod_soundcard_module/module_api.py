@@ -1,15 +1,16 @@
 import array
+import collections
 import math
+import os
 import time
+from enum import Enum, IntEnum
 
 import numpy as np
-from enum import Enum, IntEnum
-from aenum import auto
-import os
-import collections
 import usb.core
 import usb.util
+from aenum import auto
 from usb.backend import libusb1 as libusb
+
 
 class SampleRate(IntEnum):
     """

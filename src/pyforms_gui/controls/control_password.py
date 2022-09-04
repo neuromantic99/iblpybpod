@@ -1,8 +1,7 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
+from PyQt5.QtWidgets import QLineEdit
 
 from pyforms_gui.controls.control_text import ControlText
-from AnyQt.QtWidgets import QLineEdit
+
 
 class ControlPassword(ControlText):
 

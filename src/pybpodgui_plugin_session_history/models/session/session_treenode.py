@@ -1,11 +1,8 @@
-# !/usr/bin/python
-# -*- coding: utf-8 -*-
-
 import logging
 
-from confapp import conf
+from PyQt5.QtGui import QIcon
 
-from AnyQt.QtGui import QIcon
+import pybpodgui_plugin_session_history.settings as conf
 from pybpodgui_plugin_session_history.session_history import SessionHistory
 
 logger = logging.getLogger(__name__)

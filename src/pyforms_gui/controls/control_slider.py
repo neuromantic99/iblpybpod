@@ -1,9 +1,6 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
+from PyQt5 import uic
 
 import pyforms_gui.utils.tools as tools
-
-from AnyQt                            import uic
 from pyforms_gui.controls.control_base import ControlBase
 
 

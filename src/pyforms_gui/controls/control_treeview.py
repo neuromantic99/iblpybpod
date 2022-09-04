@@ -1,9 +1,7 @@
-# !/usr/bin/python
-# -*- coding: utf-8 -*-
-from pyforms_gui.controls.control_base import ControlBase
+from PyQt5.QtGui import QStandardItemModel
+from PyQt5.QtWidgets import QTreeView, QAbstractItemView
 
-from AnyQt.QtWidgets import QTreeView, QAbstractItemView
-from AnyQt.QtGui     import QStandardItem, QStandardItemModel
+from pyforms_gui.controls.control_base import ControlBase
 
 
 class ControlTreeView(ControlBase, QTreeView):

@@ -1,15 +1,9 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
+from PyQt5 import uic
+from PyQt5.QtWidgets import QFileDialog
 
-from confapp import conf
-
-from pyforms_gui.controls.control_base import ControlBase
-
+import pyforms_gui.settings as conf
 import pyforms_gui.utils.tools as tools
-
-
-from AnyQt           import uic, _api
-from AnyQt.QtWidgets import QFileDialog
+from pyforms_gui.controls.control_base import ControlBase
 
 
 class ControlDir(ControlBase):

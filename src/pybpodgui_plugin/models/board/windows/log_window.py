@@ -1,14 +1,12 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 import logging
 
-from AnyQt.QtGui import QIcon
-from confapp import conf
-from pyforms.basewidget import BaseWidget
-from pyforms.controls import ControlButton
-from pyforms.controls import ControlCheckBox
-from pyforms.controls import ControlTextArea
+from PyQt5.QtGui import QIcon
+
+import pybpodgui_plugin.resources as conf
+from pyforms_gui.basewidget import BaseWidget
+from pyforms_gui.controls.control_button import ControlButton
+from pyforms_gui.controls.control_checkbox import ControlCheckBox
+from pyforms_gui.controls.control_textarea import ControlTextArea
 
 logger = logging.getLogger(__name__)
 

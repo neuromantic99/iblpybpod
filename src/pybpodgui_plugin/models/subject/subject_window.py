@@ -1,17 +1,13 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 import logging
 
-import pyforms as app
 from pybpodgui_api.exceptions.run_setup import RunSetupError
 from pybpodgui_api.models.subject import Subject
 from pybpodgui_api.models.subject.subject_com import WrongSubjectConfigured
-from pyforms.basewidget import BaseWidget
-from pyforms.controls import ControlButton
-from pyforms.controls import ControlCombo
-from pyforms.controls import ControlText
+from pyforms_gui.basewidget import BaseWidget
+from pyforms_gui.controls.control_button import ControlButton
 from pyforms_gui.controls.control_checkbox import ControlCheckBox
+from pyforms_gui.controls.control_combo import ControlCombo
+from pyforms_gui.controls.control_text import ControlText
 
 logger = logging.getLogger(__name__)
 
@@ -229,4 +225,5 @@ class SubjectWindow(Subject, BaseWidget):
 
 # Execute the application
 if __name__ == "__main__":
-    app.start_app(SubjectWindow)
+    from pyforms_gui.appmanager import start_app
+    start_app(SubjectWindow)

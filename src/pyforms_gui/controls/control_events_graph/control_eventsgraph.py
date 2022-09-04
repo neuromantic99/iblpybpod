@@ -1,11 +1,8 @@
-# !/usr/bin/python
-# -*- coding: utf-8 -*-
-
 import csv
-from pyforms_gui.controls.control_base 					  import ControlBase
+from pyforms_gui.controls.control_base import ControlBase
 from pyforms_gui.controls.control_events_graph.EventsWidget import EventsWidget
-from AnyQt.QtWidgets import QWidget, QVBoxLayout, QScrollArea, QScrollBar, QFileDialog
-from AnyQt 			 import QtCore, _api
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QScrollArea, QScrollBar, QFileDialog
+from PyQt5 import QtCore
 
 class ControlEventsGraph(ControlBase, QWidget):
 	"""
@@ -27,11 +24,7 @@ class ControlEventsGraph(ControlBase, QWidget):
 
 	def init_form(self):
 		vlayout = QVBoxLayout()
-
-		if _api.USED_API == _api.QT_API_PYQT5:
-			vlayout.setContentsMargins(0,0,0,0)
-		elif _api.USED_API == _api.QT_API_PYQT4:
-			vlayout.setMargin(0)
+		vlayout.setContentsMargins(0, 0, 0, 0)
 
 		self.setLayout(vlayout)
 

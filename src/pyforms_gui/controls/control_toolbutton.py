@@ -1,14 +1,6 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
-
-
-from confapp import conf
-
-from AnyQt.QtCore    import Qt
-from AnyQt           import uic
-from AnyQt.QtWidgets import QToolButton, QSizePolicy
-from AnyQt.QtGui     import QIcon
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QToolButton, QSizePolicy
 
 from pyforms_gui.controls.control_base import ControlBase
 

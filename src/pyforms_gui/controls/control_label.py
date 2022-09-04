@@ -1,13 +1,8 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
 """ pyforms_gui.controls.ControlLabel"""
 
+from PyQt5 import uic, QtCore, QtGui
+
 import pyforms_gui.utils.tools as tools
-from confapp import conf
-
-from AnyQt import uic, QtCore, QtGui
-
 from pyforms_gui.controls.control_base import ControlBase
 
 __author__ = "Carlos Mão de Ferro"

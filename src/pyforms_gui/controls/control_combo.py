@@ -1,12 +1,6 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
-
 import pyforms_gui.utils.tools as tools
 
-from confapp import conf
-
-from AnyQt.QtWidgets import QLabel, QWidget, QComboBox, QHBoxLayout, QSizePolicy
+from PyQt5.QtWidgets import QLabel, QWidget, QComboBox, QHBoxLayout, QSizePolicy
 
 from pyforms_gui.controls.control_base import ControlBase
 

@@ -1,6 +1,3 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 import logging
 from pybpodgui_plugin.models.project.project_treenode import ProjectTreeNode
 

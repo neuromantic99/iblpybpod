@@ -1,5 +1,6 @@
-from AnyQt.QtGui import QIcon
-from confapp import conf
+from PyQt5.QtGui import QIcon
+
+import pybpod_soundcard_module.settings as conf
 from pybpod_soundcard_module.module_gui import SoundCardModuleGUI
 
 

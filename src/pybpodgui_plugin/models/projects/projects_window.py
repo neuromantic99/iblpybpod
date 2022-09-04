@@ -1,16 +1,10 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
+from PyQt5.QtCore import pyqtSignal
+from PyQt5.QtWidgets import QFileDialog
 
-import pyforms
-from confapp import conf
-
-from AnyQt.QtWidgets import QFileDialog
-from AnyQt.QtCore import pyqtSignal
-
+import pyforms_generic_editor.resources as conf
 from pybpodgui_plugin.models.project import Project
 from pybpodgui_plugin.models.session import Session
-
-from pyforms.controls import ControlToolButton
+from pyforms_gui.controls.control_toolbutton import ControlToolButton
 
 
 class ProjectsWindow(object):
@@ -78,4 +72,5 @@ class ProjectsWindow(object):
 
 
 if __name__ == "__main__":
-    pyforms.start_app(ProjectsWindow)
+    from pyforms_gui.appmanager import start_app
+    start_app(ProjectsWindow)
