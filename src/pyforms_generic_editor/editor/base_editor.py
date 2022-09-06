@@ -1,35 +1,45 @@
+# !/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+import sys
+import os
 import logging
+from confapp import conf
+
 import pkgutil
 
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QApplication
+from AnyQt.QtWidgets import qApp, QApplication
+from AnyQt.QtGui import QIcon
+
+from pyforms.basewidget import BaseWidget
+from pyforms.controls import ControlMdiArea
+from pyforms.controls import ControlDockWidget
 
 import pyforms_generic_editor
-import pyforms_generic_editor.resources as rconf
-import pyforms_generic_editor.settings as sconf
-from pyforms_generic_editor.editor.generic_file_editor import GenericFileEditor
 from pyforms_generic_editor.plugins import loader as plugin_loader
-from pyforms_gui.basewidget import BaseWidget
-from pyforms_gui.controls import control_dockwidget
-from pyforms_gui.controls import control_mdiarea
+from pyforms_generic_editor.editor.generic_file_editor import GenericFileEditor
 
 logger = logging.getLogger(__name__)
 
 
 class BaseEditor(BaseWidget):
 	def __init__(self):
-		BaseWidget.__init__(self, sconf.GENERIC_EDITOR_TITLE)
 
-		self.mdi_area = control_mdiarea.ControlMdiArea()
-		self.dock = control_dockwidget.ControlDockWidget(label='Projects', side=control_dockwidget.ControlDockWidget.SIDE_LEFT, order=1)
-		self.details = control_dockwidget.ControlDockWidget(label='Details', side=control_dockwidget.ControlDockWidget.SIDE_RIGHT, order=2)
+		global conf
+		conf += 'pyforms_generic_editor.resources'
+
+		BaseWidget.__init__(self, conf.GENERIC_EDITOR_TITLE)
+
+		self.mdi_area = ControlMdiArea()
+		self.dock = ControlDockWidget(label='Projects', side=ControlDockWidget.SIDE_LEFT, order=1)
+		self.details = ControlDockWidget(label='Details', side=ControlDockWidget.SIDE_RIGHT, order=2)
 
 		self.dependencies = []
 		self.plugins_classes = []
 
 		self.mainmenu = [
 			{'File': [
-				{'Exit': self._exit_app, 'icon': QIcon(rconf.EXIT_SMALL_ICON)}
+				{'Exit': self._exit_app, 'icon': QIcon(conf.EXIT_SMALL_ICON)}
 			]},
 			{'Window': [
 				{'Cascade all': self._option_cascade_all},
@@ -39,7 +49,7 @@ class BaseEditor(BaseWidget):
 				{'Show details': self.details.show},
 			]},
 			{'Options': [
-				{'Edit user settings': self._edit_user_settings, 'icon': QIcon(rconf.USER_SETTINGS_ICON)}
+				{'Edit user settings': self._edit_user_settings, 'icon': QIcon(conf.USER_SETTINGS_ICON)}
 			]},
 			{'Help': [  # this option works for OSX also
 				{'About QT': self._option_about_qt},
@@ -49,20 +59,20 @@ class BaseEditor(BaseWidget):
 
 		plugin_loader.install_plugins(self)  # Load plugins
 
-		if sconf.GENERIC_EDITOR_MODEL:
-			if isinstance(sconf.GENERIC_EDITOR_MODEL, str):
-				c = self.__load_module(sconf.GENERIC_EDITOR_MODEL)
+		if conf.GENERIC_EDITOR_MODEL:
+			if isinstance(conf.GENERIC_EDITOR_MODEL, str):
+				c = self.__load_module(conf.GENERIC_EDITOR_MODEL)
 			else:
-				c = sconf.GENERIC_EDITOR_MODEL
+				c = conf.GENERIC_EDITOR_MODEL
 			self._model = c(self)
 
 	def init_form(self):
 		BaseWidget.init_form(self)
 
 		# Loads a project automatically.
-		if sconf.DEFAULT_PROJECT_PATH:
+		if conf.DEFAULT_PROJECT_PATH:
 			try:
-				self.model.open_project(sconf.DEFAULT_PROJECT_PATH)
+				self.model.open_project(conf.DEFAULT_PROJECT_PATH)
 			except Exception as err:
 				for project in self.model.projects:
 					project.close(silent=True)
@@ -90,7 +100,7 @@ class BaseEditor(BaseWidget):
 			except Exception as err:
 				logger.error(str(err), exec_info=True)
 
-		self.setWindowIcon(QIcon(rconf.APP_LOGO_ICON))
+		self.setWindowIcon(QIcon(conf.APP_LOGO_ICON))
 		text = """
 				<html><body>
 				<h2>About {gui_title}</h2>
@@ -144,7 +154,7 @@ class BaseEditor(BaseWidget):
 		Exit app option from the menu
 		"""
 		if self._confirm_exit():
-			QApplication.quit()
+			qApp.quit()
 
 	def _confirm_exit(self):
 		"""

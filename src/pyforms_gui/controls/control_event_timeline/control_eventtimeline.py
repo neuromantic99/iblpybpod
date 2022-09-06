@@ -1,19 +1,19 @@
-import csv
-import os
-import traceback
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
-from PyQt5 import QtCore
-from PyQt5.QtWidgets import QWidget, QScrollArea, QFileDialog, QMessageBox, QPushButton, QLabel, QSlider, QHBoxLayout, QVBoxLayout
-import pyforms_gui.settings as conf
-
+import csv, os
+from confapp import conf
+from AnyQt import QtCore, _api
+from AnyQt.QtWidgets import QWidget, QScrollArea, QFileDialog, QMessageBox, QPushButton, QLabel, QSlider, QHBoxLayout, QVBoxLayout
 from pyforms_gui.controls.control_base import ControlBase
+from pyforms_gui.controls.control_event_timeline.utils.import_window import ImportWindow
+from pyforms_gui.controls.control_event_timeline.timeline_widget import TimelineWidget
 from pyforms_gui.controls.control_event_timeline.events.win_track import TimelinePopupWindow
 from pyforms_gui.controls.control_event_timeline.graphs.graph import Graph
-from pyforms_gui.controls.control_event_timeline.graphs.win_events_generator import GraphsEventsGenerator
-from pyforms_gui.controls.control_event_timeline.graphs.win_graph_properties import GraphsProperties
 from pyforms_gui.controls.control_event_timeline.graphs.win_graph_to_event import Graph2Event
-from pyforms_gui.controls.control_event_timeline.timeline_widget import TimelineWidget
-from pyforms_gui.controls.control_event_timeline.utils.import_window import ImportWindow
+from pyforms_gui.controls.control_event_timeline.graphs.win_graph_properties  import GraphsProperties
+from pyforms_gui.controls.control_event_timeline.graphs.win_events_generator import GraphsEventsGenerator
+import traceback
 
 
 class ControlEventTimeline(ControlBase, QWidget):
@@ -138,8 +138,13 @@ class ControlEventTimeline(ControlBase, QWidget):
 
         vlayout = QVBoxLayout()
         hlayout = QHBoxLayout()
-        hlayout.setContentsMargins(0, 0, 0, 0)
-        vlayout.setContentsMargins(0, 0, 0, 0)
+
+        if _api.USED_API == _api.QT_API_PYQT5:
+            hlayout.setContentsMargins(0,0,0,0)
+            vlayout.setContentsMargins(0,0,0,0)
+        elif _api.USED_API == _api.QT_API_PYQT4:
+            hlayout.setMargin(0)
+            vlayout.setMargin(0)
 
         self.setLayout(vlayout)
 

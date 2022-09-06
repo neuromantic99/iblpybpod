@@ -1,18 +1,25 @@
+# !/usr/bin/python3
+# -*- coding: utf-8 -*-
+
 import logging
 
-from pybpodgui_api.exceptions.run_setup import RunSetupError
-from pybpodgui_api.models.setup import Setup
-from pybpodgui_plugin.models.session import Session
-from pybpodgui_plugin.models.setup.board_task import BoardTask
+import pyforms as app
+
+from pyforms.basewidget import BaseWidget
+from pyforms.controls import ControlText
+from pyforms.controls import ControlList
+from pyforms.controls import ControlButton
+from pyforms.controls import ControlCombo
+from pyforms.controls import ControlCheckBox
+from pyforms.controls import ControlCheckBoxList
+from pyforms.controls import ControlEmptyWidget
+
 from pybpodgui_plugin.models.subject import Subject
-from pyforms_gui.basewidget import BaseWidget
-from pyforms_gui.controls.control_button import ControlButton
-from pyforms_gui.controls.control_checkbox import ControlCheckBox
-from pyforms_gui.controls.control_checkboxlist import ControlCheckBoxList
-from pyforms_gui.controls.control_combo import ControlCombo
-from pyforms_gui.controls.control_emptywidget import ControlEmptyWidget
-from pyforms_gui.controls.control_list import ControlList
-from pyforms_gui.controls.control_text import ControlText
+from pybpodgui_api.models.setup import Setup
+from pybpodgui_api.exceptions.run_setup import RunSetupError
+
+from pybpodgui_plugin.models.setup.board_task import BoardTask
+from pybpodgui_plugin.models.session import Session
 
 logger = logging.getLogger(__name__)
 
@@ -397,5 +404,4 @@ class SetupWindow(Setup, BaseWidget):
 
 # Execute the application
 if __name__ == "__main__":
-    from pyforms_gui.appmanager import start_app
-    start_app(SetupWindow)
+    app.start_app(SetupWindow)

@@ -1,13 +1,12 @@
-from PyQt5.QtGui import QColor
-from PyQt5.QtWidgets import QColorDialog
-
-import pyforms_gui.settings as conf
-from pyforms_gui.basewidget import BaseWidget
+from pyforms.basewidget import BaseWidget
 from pyforms_gui.controls.control_button import ControlButton
-from pyforms_gui.controls.control_checkbox import ControlCheckBox
-from pyforms_gui.controls.control_number import ControlNumber
 from pyforms_gui.controls.control_text import ControlText
+from pyforms_gui.controls.control_number import ControlNumber
+from pyforms_gui.controls.control_checkbox import ControlCheckBox
 
+from confapp import conf
+from AnyQt.QtGui import QColor
+from AnyQt.QtWidgets import QColorDialog
 
 class EventWindow(BaseWidget):
 

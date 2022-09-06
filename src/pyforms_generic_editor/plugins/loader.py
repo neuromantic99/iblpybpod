@@ -1,9 +1,13 @@
-import importlib
+# !/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+
 import logging
 import os
+import importlib
 import sys
 
-import pyforms_generic_editor.settings as conf
+from confapp import conf
 
 logger = logging.getLogger(__name__)
 

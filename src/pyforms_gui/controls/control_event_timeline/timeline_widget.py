@@ -1,12 +1,13 @@
-from PyQt5 import QtCore
-from PyQt5.QtGui import QColor, QPainter, QFont, QCursor, QKeyEvent
-from PyQt5.QtWidgets import QWidget
+# !/usr/bin/python
+# -*- coding: utf-8 -*-
 
-from pyforms_gui.controls.control_event_timeline.events.event import Event
-from pyforms_gui.controls.control_event_timeline.events.pointer import Pointer
+from AnyQt import QtCore
+from AnyQt.QtWidgets import QWidget, QMessageBox
+from AnyQt.QtGui import QColor, QPainter, QFont, QCursor, QKeyEvent
 from pyforms_gui.controls.control_event_timeline.events.track import Track
+from pyforms_gui.controls.control_event_timeline.events.event import Event
 from pyforms_gui.controls.control_event_timeline.graphs.graph import Graph
-
+from pyforms_gui.controls.control_event_timeline.events.pointer import Pointer
 
 class TimelineWidget(QWidget):
     """

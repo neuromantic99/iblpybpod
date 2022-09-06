@@ -1,7 +1,13 @@
-from PyQt5.QtWidgets import QToolBox
-from PyQt5.QtWidgets import QFrame
-from PyQt5.QtWidgets import QVBoxLayout
-from PyQt5.QtWidgets import QHBoxLayout
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+from confapp import conf
+
+from AnyQt           import _api
+from AnyQt.QtWidgets import QToolBox
+from AnyQt.QtWidgets import QFrame
+from AnyQt.QtWidgets import QVBoxLayout
+from AnyQt.QtWidgets import QHBoxLayout
 
 from pyforms_gui.controls.control_base import ControlBase
 
@@ -27,7 +33,11 @@ class ControlToolBox(ControlBase):
             if isinstance(item, tuple):
                 widget = QFrame(self.form);
                 layout = QVBoxLayout();
-                layout.setContentsMargins(0, 0, 0, 0)
+                
+                if _api.USED_API == _api.QT_API_PYQT5:
+                    layout.setContentsMargins(0,0,0,0)
+                elif _api.USED_API == _api.QT_API_PYQT4:
+                    layout.setMargin(0)
 
                 widget.setLayout(layout)
 
@@ -35,8 +45,12 @@ class ControlToolBox(ControlBase):
                     if isinstance(e, tuple):
                         hwidget = QFrame(self.form);
                         hlayout = QHBoxLayout();
-                        hlayout.setContentsMargins(0, 0, 0, 0)
-
+                        
+                        if _api.USED_API == _api.QT_API_PYQT5:
+                            hlayout.setContentsMargins(0,0,0,0)
+                        elif _api.USED_API == _api.QT_API_PYQT4:
+                            hlayout.setMargin(0)
+                            
                         hwidget.setLayout(hlayout)
                         for ee in e:
                             hlayout.addWidget(ee.form)

@@ -1,20 +1,26 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
 """ pycontrolgui_plugin_timeline.trials_plot"""
+
+from pyforms.controls import ControlEventsGraph
+from pyforms.controls import ControlCheckBoxList
+from pyforms.controls import ControlButton
+from pyforms.basewidget import BaseWidget
+
+from pybpodapi.com.messaging.state_occurrence import StateOccurrence
+from pybpodapi.com.messaging.event_occurrence import EventOccurrence
+from pybpodapi.com.messaging.event_resume import EventResume
+from pybpodapi.com.messaging.session_info import SessionInfo
+from pybpodgui_api.exceptions.run_setup import RunSetupError
 
 import logging
 import math
 from datetime import datetime as datetime_now
 
-from PyQt5.QtCore import QTimer, QEventLoop
+from confapp import conf
 
-import pybpodgui_plugin_timeline.settings as conf
-from pybpodapi.com.messaging.event_occurrence import EventOccurrence
-from pybpodapi.com.messaging.session_info import SessionInfo
-from pybpodapi.com.messaging.state_occurrence import StateOccurrence
-from pybpodgui_api.exceptions.run_setup import RunSetupError
-from pyforms_gui.basewidget import BaseWidget
-from pyforms_gui.controls.control_button import ControlButton
-from pyforms_gui.controls.control_checkboxlist import ControlCheckBoxList
-from pyforms_gui.controls.control_events_graph.control_eventsgraph import ControlEventsGraph
+from AnyQt.QtCore import QTimer, QEventLoop
 
 logger = logging.getLogger(__name__)
 

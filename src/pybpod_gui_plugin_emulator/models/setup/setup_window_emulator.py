@@ -1,7 +1,7 @@
-import pybpod_gui_plugin_emulator.settings as conf
 from pybpod_gui_plugin_emulator import EmulatorGUI
 from pybpodgui_plugin.models.setup.setup_dockwindow import SetupDockWindow
 from pyforms_gui.controls.control_button import ControlButton
+from confapp import conf
 
 
 class SetupWindowEmulator(SetupDockWindow):

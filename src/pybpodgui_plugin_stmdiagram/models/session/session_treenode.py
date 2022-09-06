@@ -1,8 +1,14 @@
+# !/usr/bin/python3
+# -*- coding: utf-8 -*-
+
 import logging
 
-from PyQt5.QtGui import QIcon
+from confapp import conf
 
-import pybpodgui_plugin_stmdiagram.settings as conf
+from AnyQt.QtGui import QIcon
+
+from pyforms.controls import ControlTree
+
 from pybpodgui_plugin_stmdiagram.stmdiagram_window import StmDiagramWindow
 
 logger = logging.getLogger(__name__)

@@ -1,10 +1,19 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """ pyforms_gui.controls.ControlList
 
 """
 import logging
+import os
 
-from PyQt5.QtWidgets import QTableView, QAbstractItemView
+from confapp import conf
 
+from AnyQt           import QtCore, uic
+from AnyQt.QtWidgets import QTableView, QAbstractItemView
+from AnyQt.QtGui     import QIcon
+
+from pyforms_gui.basewidget import BaseWidget
 from pyforms_gui.controls.control_base import ControlBase
 
 logger = logging.getLogger(__name__)

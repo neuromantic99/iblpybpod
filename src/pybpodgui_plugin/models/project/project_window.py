@@ -1,11 +1,17 @@
+# !/usr/bin/python3
+# -*- coding: utf-8 -*-
+
 import logging
 import os
 
-from PyQt5.QtWidgets import QFileDialog, QMessageBox
+from AnyQt.QtWidgets import QFileDialog, QMessageBox
+
+import pyforms as app
+from pyforms.controls import ControlText
+
+from pyforms_generic_editor.models.project import GenericProject
 
 from pybpodgui_api.models.project import Project
-from pyforms_generic_editor.models.project import GenericProject
-from pyforms_gui.controls.control_text import ControlText
 
 logger = logging.getLogger(__name__)
 
@@ -66,5 +72,4 @@ class ProjectWindow(Project, GenericProject):
 
 # Execute the application
 if __name__ == "__main__":
-    from pyforms_gui.appmanager import start_app
-    start_app(ProjectWindow)
+    app.startApp(ProjectWindow)

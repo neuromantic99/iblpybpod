@@ -1,15 +1,26 @@
-import json
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
-from PyQt5 import QtCore
-from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import QFrame, QVBoxLayout, QTabWidget, QSplitter, QHBoxLayout, QSpacerItem, QSizePolicy, QLabel, \
-    QFileDialog, QMessageBox, QInputDialog
+import json
+import AnyQt
+
+from AnyQt.QtWidgets import QFrame
+from AnyQt.QtWidgets import QVBoxLayout
+from AnyQt.QtWidgets import QTabWidget
+from AnyQt.QtWidgets import QSplitter
+from AnyQt.QtWidgets import QHBoxLayout
+from AnyQt.QtWidgets import QSpacerItem
+from AnyQt.QtWidgets import QSizePolicy
+from AnyQt.QtWidgets import QLabel
+from AnyQt.QtGui import QFont
+from AnyQt.QtWidgets import QFileDialog
+from AnyQt import QtCore, _api
 
 from pyforms_gui.controls.control_base import ControlBase
+
+from AnyQt.QtWidgets import QMessageBox, QInputDialog
+
 from .organizers import *
-
-
-# from AnyQt import QtCore, _api
 
 
 class BaseWidget(QFrame):
@@ -32,6 +43,13 @@ class BaseWidget(QFrame):
 
         layout = QVBoxLayout()
         self.setLayout(layout)
+        
+        if _api.USED_API == _api.QT_API_PYQT5:
+            layout.setContentsMargins(0, 0, 0, 0)
+        elif _api.USED_API == _api.QT_API_PYQT4:
+            layout.setMargin(0)
+
+        self.title = title
 
         self.title = title
         self.has_progress = False
@@ -72,11 +90,10 @@ class BaseWidget(QFrame):
             self._formLoaded = True
 
     def set_margin(self, margin):
-        self.layout().setContentsMargins(margin, margin, margin, margin)
-        # if _api.USED_API == _api.QT_API_PYQT5:
-        #     self.layout().setContentsMargins(margin,margin,margin,margin)
-        # elif _api.USED_API == _api.QT_API_PYQT4:
-        #     self.layout().setMargin(margin)
+        if _api.USED_API == _api.QT_API_PYQT5:
+            self.layout().setContentsMargins(margin,margin,margin,margin)
+        elif _api.USED_API == _api.QT_API_PYQT4:
+            self.layout().setMargin(margin)
 
     def generate_tabs(self, formsetdict):
         """
@@ -161,6 +178,11 @@ class BaseWidget(QFrame):
                 else:
                     self._handle_text(layout, row)
 
+        if _api.USED_API == _api.QT_API_PYQT5:
+            layout.setContentsMargins(0, 0, 0, 0)
+        elif _api.USED_API == _api.QT_API_PYQT4:
+            layout.setMargin(0)
+            
         control.setLayout(layout)
         return control
 
@@ -378,11 +400,10 @@ class BaseWidget(QFrame):
     ##########################################################################
 
     def set_margin(self, margin):
-        self.layout().setContentsMargins(margin, margin, margin, margin)
-        # if AnyQt.USED_API == 'pyqt5':
-        #     self.layout().setContentsMargins(margin, margin, margin, margin)
-        # else:
-        #     self.layout().setMargin(margin)
+        if AnyQt.USED_API == 'pyqt5':
+            self.layout().setContentsMargins(margin, margin, margin, margin)
+        else:
+            self.layout().setMargin(margin)
 
     ##########################################################################
     ############ EVENTS ######################################################

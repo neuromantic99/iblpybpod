@@ -1,12 +1,17 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+
 import logging
 import os
 
-from pyforms_gui.basewidget import BaseWidget
+import pyforms
+from pyforms.basewidget import BaseWidget
 
 logger = logging.getLogger(__name__)
 
 try:
-    from pyforms_gui.controls.control_codeeditor import ControlCodeEditor
+    from pyforms.controls import ControlCodeEditor
 except:
     logger.error("Could not import ControlCodeEditor. Is QScintilla installed?")
 
@@ -60,5 +65,4 @@ class CodeEditor(BaseWidget):
 
 # Execute the application
 if __name__ == "__main__":
-    from pyforms_gui.appmanager import start_app
-    start_app(CodeEditor)
+    pyforms.start_app(CodeEditor)

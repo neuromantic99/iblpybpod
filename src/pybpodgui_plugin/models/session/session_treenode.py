@@ -1,9 +1,14 @@
+# !/usr/bin/python3
+# -*- coding: utf-8 -*-
+
 import logging
 
-from PyQt5 import QtCore
-from PyQt5.QtGui import QIcon
+from confapp import conf
 
-import pyforms_generic_editor.resources as conf
+
+from AnyQt.QtGui import QIcon
+from AnyQt import QtCore
+
 from pybpodgui_plugin.models.session.session_window import SessionWindow
 
 logger = logging.getLogger(__name__)

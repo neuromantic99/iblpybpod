@@ -1,4 +1,8 @@
-from PyQt5.QtGui import QColor
+# !/usr/bin/python
+# -*- coding: utf-8 -*-
+
+from AnyQt.QtGui import QColor
+from pyforms_gui.controls.control_events_graph.Track import Track
 
 
 class Event(object):

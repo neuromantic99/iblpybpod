@@ -1,8 +1,13 @@
-from PyQt5 import QtCore
-from PyQt5.QtWidgets import QTreeView, QFileSystemModel
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+
+from confapp import conf
 
 from pyforms_gui.controls.control_base import ControlBase
 
+from AnyQt           import QtCore
+from AnyQt.QtWidgets import QTreeView, QFileSystemModel
 
 class ControlFilesTree(ControlBase):
     def init_form(self):

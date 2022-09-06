@@ -1,12 +1,16 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+import pyforms
 import os
-from pyforms_gui.basewidget import BaseWidget
-from pyforms_gui.controls.control_treeview import ControlTreeView
-from pyforms_gui.controls.control_button import ControlButton
-from pyforms_gui.controls.control_text import ControlText
-from pyforms_gui.controls.control_combo import ControlCombo
+from pyforms.basewidget import BaseWidget
+from pyforms.controls import ControlTreeView
+from pyforms.controls import ControlButton
+from pyforms.controls import ControlText
+from pyforms.controls import ControlCombo
 from pathlib import Path
 
-from PyQt5.QtWidgets import QFileSystemModel
+from AnyQt.QtWidgets import QFileSystemModel
 
 from pybpodgui_api.models.task.taskcommand import TaskCommand
 
@@ -92,5 +96,4 @@ class CommandEditor(BaseWidget):
 
 
 if __name__ == "__main__":
-    from pyforms_gui.appmanager import start_app
-    start_app(CommandEditor)
+    pyforms.start_app(CommandEditor)

@@ -1,12 +1,15 @@
+# !/usr/bin/python3
+# -*- coding: utf-8 -*-
+
 import logging
 
-from PyQt5 import QtCore
-from PyQt5.QtGui import QIcon
+from confapp import conf
 
-import pyforms_generic_editor.resources as pyforms_conf
-import pybpodgui_plugin.resources as pybpodgui_conf
-from pybpodgui_plugin.models.experiment.experiment_window import ExperimentWindow
+from AnyQt.QtGui import QIcon
+from AnyQt import QtCore
+
 from pybpodgui_plugin.models.setup import Setup
+from pybpodgui_plugin.models.experiment.experiment_window import ExperimentWindow
 
 logger = logging.getLogger(__name__)
 
@@ -37,7 +40,7 @@ class ExperimentTreeNode(ExperimentWindow):
         """
         ExperimentWindow.__init__(self, project)
 
-        self.__running_icon = QIcon(pyforms_conf.PLAY_SMALL_ICON)
+        self.__running_icon = QIcon(conf.PLAY_SMALL_ICON)
 
         self.create_treenode(self.tree)
 
@@ -61,14 +64,14 @@ class ExperimentTreeNode(ExperimentWindow):
         :return type: QTreeWidgetItem
         """
         self.node = tree.create_child(self.name, self.project.experiments_node,
-                                      icon=QIcon(pybpodgui_conf.EXPERIMENT_SMALL_ICON))
+                                      icon=QIcon(conf.EXPERIMENT_SMALL_ICON))
         self.node.key_pressed_event = self.node_key_pressed_event
         self.node.window = self
         self.node.setExpanded(True)
 
         tree.add_popup_menu_option('Add setup', self.__add_setup, item=self.node,
-                                   icon=QIcon(pyforms_conf.ADD_SMALL_ICON))
-        tree.add_popup_menu_option('Remove', self.remove, item=self.node, icon=QIcon(pyforms_conf.REMOVE_SMALL_ICON))
+                                   icon=QIcon(conf.ADD_SMALL_ICON))
+        tree.add_popup_menu_option('Remove', self.remove, item=self.node, icon=QIcon(conf.REMOVE_SMALL_ICON))
 
         return self.node
 

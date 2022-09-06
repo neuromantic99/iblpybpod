@@ -1,12 +1,16 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 """ pyforms_gui.controls.ControlList
 
 """
 import logging
 import os
 
-from PyQt5 import QtCore, uic
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QTableWidgetItem, QWidget, QAbstractItemView, QTableWidgetSelectionRange
+
+from AnyQt           import QtCore, uic
+from AnyQt.QtWidgets import QTableWidgetItem, QWidget, QAbstractItemView, QTableWidgetSelectionRange
+from AnyQt.QtGui     import QIcon
 
 from pyforms_gui.basewidget import BaseWidget
 from pyforms_gui.controls.control_base import ControlBase

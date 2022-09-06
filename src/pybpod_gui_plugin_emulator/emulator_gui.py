@@ -1,15 +1,14 @@
+import pyforms
 import os
-
-from serial import SerialException
-
-import pybpod_gui_plugin_emulator.settings as conf
 from pybpodapi.bpod import Bpod
 from pybpodgui_api.exceptions.run_setup import RunSetupError
 from pybpodgui_plugin.utils import make_lambda_func
-from pyforms_gui.basewidget import BaseWidget
+from pyforms.basewidget import BaseWidget
 from pyforms_gui.controls.control_button import ControlButton
+from confapp import conf
 from pyforms_gui.controls.control_label import ControlLabel
 from pyforms_gui.controls.control_text import ControlText
+from serial import SerialException
 
 
 class EmulatorGUI(BaseWidget):
@@ -289,5 +288,4 @@ class EmulatorGUI(BaseWidget):
 
 
 if __name__ == '__main__':
-    from pyforms_gui.appmanager import start_app
-    start_app(EmulatorGUI, geometry=(0, 0, 300, 300))
+    pyforms.start_app(EmulatorGUI, geometry=(0, 0, 300, 300))

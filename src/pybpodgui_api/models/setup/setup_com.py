@@ -1,6 +1,9 @@
+# !/usr/bin/python3
+# -*- coding: utf-8 -*-
+
 import logging
 
-from pybpodgui_api import settings as conf
+from confapp import conf
 from pybpodgui_api.exceptions.run_setup import RunSetupError
 from pybpodgui_api.models.setup.setup_io import SetupBaseIO
 

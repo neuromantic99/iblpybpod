@@ -1,16 +1,19 @@
-import logging
+# !/usr/bin/python3
+# -*- coding: utf-8 -*-
+
 import os
+import logging
 
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QFileDialog
+from confapp import conf
 
-import pybpodgui_plugin.resources as pybpodgui_conf
-import pyforms_generic_editor.resources as pyforms_conf
-from pybpodgui_plugin.models.board import Board
-from pybpodgui_plugin.models.experiment import Experiment
+from AnyQt.QtWidgets import QFileDialog
+from AnyQt.QtGui import QIcon
+
 from pybpodgui_plugin.models.project.project_window import ProjectWindow
-from pybpodgui_plugin.models.subject import Subject
+from pybpodgui_plugin.models.experiment import Experiment
+from pybpodgui_plugin.models.board import Board
 from pybpodgui_plugin.models.task import Task
+from pybpodgui_plugin.models.subject import Subject
 from pybpodgui_plugin.models.user import User
 
 logger = logging.getLogger(__name__)
@@ -28,52 +31,52 @@ class ProjectTreeNode(ProjectWindow):
         self.create_treenode(self.tree)
 
     def create_treenode(self, tree):
-        self.node = tree.create_child(self.name, icon=QIcon(pyforms_conf.PROJECT_SMALL_ICON))
+        self.node = tree.create_child(self.name, icon=QIcon(conf.PROJECT_SMALL_ICON))
         self.node.window = self
         self.node.setExpanded(True)
 
-        tree.add_popup_menu_option('Save', self.save, item=self.node, icon=QIcon(pyforms_conf.SAVE_SMALL_ICON))
-        tree.add_popup_menu_option('Save as', self.save_as, item=self.node, icon=QIcon(pyforms_conf.SAVE_SMALL_ICON))
-        tree.add_popup_menu_option('Close', self.close, item=self.node, icon=QIcon(pyforms_conf.CLOSE_SMALL_ICON))
+        tree.add_popup_menu_option('Save', self.save, item=self.node, icon=QIcon(conf.SAVE_SMALL_ICON))
+        tree.add_popup_menu_option('Save as', self.save_as, item=self.node, icon=QIcon(conf.SAVE_SMALL_ICON))
+        tree.add_popup_menu_option('Close', self.close, item=self.node, icon=QIcon(conf.CLOSE_SMALL_ICON))
 
         self.experiments_node = tree.create_child('Experiments', parent=self.node,
-                                                  icon=QIcon(pybpodgui_conf.EXPERIMENTS_SMALL_ICON))
+                                                  icon=QIcon(conf.EXPERIMENTS_SMALL_ICON))
         self.experiments_node.window = self
         self.experiments_node.setExpanded(True)
 
         tree.add_popup_menu_option('Add experiment', self._add_experiment, item=self.experiments_node,
-                                   icon=QIcon(pyforms_conf.ADD_SMALL_ICON))
+                                   icon=QIcon(conf.ADD_SMALL_ICON))
 
-        self.subjects_node = tree.create_child('Subjects', parent=self.node, icon=QIcon(pybpodgui_conf.SUBJECTS_SMALL_ICON))
+        self.subjects_node = tree.create_child('Subjects', parent=self.node, icon=QIcon(conf.SUBJECTS_SMALL_ICON))
         tree.add_popup_menu_option('Add subject', self.create_subject, item=self.subjects_node,
-                                   icon=QIcon(pyforms_conf.ADD_SMALL_ICON))
+                                   icon=QIcon(conf.ADD_SMALL_ICON))
         self.subjects_node.window = self
         self.subjects_node.setExpanded(True)
 
-        self.boards_node = tree.create_child('Bpod boards', parent=self.node, icon=QIcon(pybpodgui_conf.BOARDS_SMALL_ICON))
+        self.boards_node = tree.create_child('Bpod boards', parent=self.node, icon=QIcon(conf.BOARDS_SMALL_ICON))
         self.boards_node.window = self
         self.boards_node.setExpanded(True)
 
         tree.add_popup_menu_option('Add Bpod boards', self._add_board, item=self.boards_node,
-                                   icon=QIcon(pyforms_conf.ADD_SMALL_ICON))
+                                   icon=QIcon(conf.ADD_SMALL_ICON))
 
-        self.tasks_node = tree.create_child('Protocols', parent=self.node, icon=QIcon(pybpodgui_conf.TASKS_SMALL_ICON))
+        self.tasks_node = tree.create_child('Protocols', parent=self.node, icon=QIcon(conf.TASKS_SMALL_ICON))
         tree.add_popup_menu_option('Add protocol', self._add_task, item=self.tasks_node,
-                                   icon=QIcon(pyforms_conf.ADD_SMALL_ICON))
+                                   icon=QIcon(conf.ADD_SMALL_ICON))
         self.tasks_node.window = self
         self.tasks_node.setExpanded(True)
 
         tree.add_popup_menu_option('Import protocol', self.import_task, item=self.tasks_node,
-                                   icon=QIcon(pyforms_conf.OPEN_SMALL_ICON))
+                                   icon=QIcon(conf.OPEN_SMALL_ICON))
         tree.add_popup_menu_option('Import protocol (with folder contents)',
                                    self.import_task_with_directory,
                                    item=self.tasks_node,
-                                   icon=QIcon(pyforms_conf.OPEN_SMALL_ICON))
+                                   icon=QIcon(conf.OPEN_SMALL_ICON))
 
-        self.users_node = tree.create_child('Users', parent=self.node, icon=QIcon(pybpodgui_conf.PERSONS_SMALL_ICON))
+        self.users_node = tree.create_child('Users', parent=self.node, icon=QIcon(conf.PERSONS_SMALL_ICON))
         self.users_node.window = self
         self.users_node.setExpanded(True)
-        tree.add_popup_menu_option('Add User', self._add_user, item=self.users_node, icon=QIcon(pyforms_conf.ADD_SMALL_ICON))
+        tree.add_popup_menu_option('Add User', self._add_user, item=self.users_node, icon=QIcon(conf.ADD_SMALL_ICON))
 
         return self.node
 

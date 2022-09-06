@@ -3,8 +3,8 @@ from pathlib import Path
 
 from setuptools import setup, find_packages
 
-IBLPYBPOD_CURRENT_VERSION = "1.8.2a2"
-CURRENT_DIRECTORY = Path(__file__).parent.absolute()
+IBLPYBPOD_CURRENT_VERSION = "1.8.2a3"
+CURRENT_DIRECTORY = Path(__file__).parent
 CURRENT_PYTHON_VERSION = sys.version_info[:2]
 REQUIRED_PYTHON_VERSION = (3, 8)
 VER_ERR_MSG = """
@@ -23,23 +23,6 @@ with open("README.md", "r") as f:
 
 with open("requirements.txt") as f:
     require = [x.strip() for x in f.readlines() if not x.startswith('git+')]
-
-# def read(rel_path):
-#     here = Path(__file__).parent.absolute()
-#     with open(here.joinpath(rel_path), "r") as fp:
-#         return fp.read()
-#
-#
-# def get_version(rel_path):
-#     for line in read(rel_path).splitlines():
-#         if line.startswith("__version__"):
-#             delim = '"' if '"' in line else "'"
-#             return line.split(delim)[1]
-#     else:
-#         raise RuntimeError("Unable to find version string.")
-# package_finder_list = [
-#     ""
-# ]
 
 setup(
     name='iblpybpod',

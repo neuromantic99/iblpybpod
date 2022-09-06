@@ -1,4 +1,7 @@
-import pyforms_generic_editor.settings as conf
+# !/usr/bin/python3
+# -*- coding: utf-8 -*-
+
+from confapp import conf
 from pybpodgui_plugin.models.projects.projects_treenode import ProjectsTreeNode
 
 Projects = type(

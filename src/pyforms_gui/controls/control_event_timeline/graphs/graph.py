@@ -1,4 +1,6 @@
-from PyQt5.QtGui import QColor
+# !/usr/bin/python
+# -*- coding: utf-8 -*-
+from AnyQt.QtGui import QColor
 from PyQt5.QtCore import QPoint
 
 

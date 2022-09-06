@@ -1,12 +1,17 @@
+# !/usr/bin/python3
+# -*- coding: utf-8 -*-
+
 import logging
 
-from pyforms_gui import appmanager
-from pyforms_gui.basewidget import BaseWidget
+from confapp import conf
+
+
+import pyforms
+from pyforms.basewidget import BaseWidget
 
 from pyforms_generic_editor.models.project import Project
 
 logger = logging.getLogger(__name__)
-
 
 class ProjectsWindow(BaseWidget):
     def __init__(self, mainwindow=None):
@@ -82,5 +87,4 @@ class ProjectsWindow(BaseWidget):
         return self._projects
 
 
-if __name__ == "__main__":
-    appmanager.start_app(ProjectsWindow)
+if __name__ == "__main__": pyforms.start_app(ProjectsWindow)

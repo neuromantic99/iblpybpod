@@ -1,7 +1,6 @@
 import requests
-
-import pybpod_alyx_module.settings as conf
-
+import json
+from confapp import conf
 
 class Get():
     def __init__(self,_apibase):

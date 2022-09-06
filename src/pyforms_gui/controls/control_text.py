@@ -1,9 +1,19 @@
-from PyQt5 import uic
-from PyQt5.QtWidgets import QLineEdit
-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+'''
+@author: Ricardo Ribeiro
+@credits: Ricardo Ribeiro
+@license: MIT
+@version: 0.0
+@maintainer: Ricardo Ribeiro
+@email: ricardojvr@gmail.com
+@status: Development
+@lastEditedBy: Carlos Mão de Ferro (carlos.maodeferro@neuro.fchampalimaud.org)
+'''
 import pyforms_gui.utils.tools as tools
 from pyforms_gui.controls.control_base import ControlBase
-
+from AnyQt.QtWidgets import QLineEdit
+from AnyQt 			 import uic
 
 class ControlText(ControlBase):
 

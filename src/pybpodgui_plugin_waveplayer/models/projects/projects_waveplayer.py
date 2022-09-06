@@ -1,5 +1,7 @@
-from pybpodgui_plugin_waveplayer.module_gui import WavePlayerModuleGUI
+from confapp import conf
+from AnyQt.QtGui import QIcon
 
+from pybpodgui_plugin_waveplayer.module_gui import WavePlayerModuleGUI
 
 class ProjectsWavePlayer(object):
 

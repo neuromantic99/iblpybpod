@@ -1,4 +1,8 @@
 import requests
+import json
+from confapp import conf
+
+#self.apibase.addr + '/subjects' = conf.ALYX_PLUGIN_ADDRESS+'/subjects'
 
 class Get():
 

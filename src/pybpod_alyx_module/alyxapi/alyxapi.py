@@ -1,9 +1,8 @@
 import requests
-
-import pybpod_alyx_module.settings as conf
-from pybpod_alyx_module.alyxapi.data.data import Data
+import json
+from confapp import conf
 from pybpod_alyx_module.alyxapi.subjects.subjects import Subjects
-
+from pybpod_alyx_module.alyxapi.data.data import Data
 
 class AlyxAPI():
 

@@ -1,0 +1,16 @@
+DEFAULT_PROJECT_PATH: /home/michele/Documents/repos/iblrig_params/IBL/
+GENERIC_EDITOR_TITLE: IBL
+GENERIC_EDITOR_PLUGINS_PATH: /home/michele/Documents/repos/iblrig_params/plugins/
+GENERIC_EDITOR_PLUGINS_LIST:
+- pybpodgui_plugin
+- pybpodgui_plugin_timeline
+- pybpodgui_plugin_trial_timeline
+- pybpodgui_plugin_session_history
+- pybpod_rotaryencoder_module
+- pybpod_gui_plugin_emulator
+- pybpod_soundcard_module
+PYBPOD_EXTRA_INFO:
+- Users
+- Subjects
+PYBPODGUI_API_AUTO_SAVE_PROJECT_ON_RUN: True
+TARGET_BPOD_FIRMWARE_VERSION: 22

@@ -1,14 +1,15 @@
-import datetime
+# !/usr/bin/python3
+# -*- coding: utf-8 -*-
+
 import logging
+import datetime
 import traceback
-
-from PyQt5.QtWidgets import QApplication
-
-from pybpodgui_api.exceptions.invalid_session import InvalidSessionError
+from pyforms.basewidget import BaseWidget
+from pyforms.controls import ControlText
+from pyforms.controls import ControlList
+from AnyQt.QtWidgets import QApplication
 from pybpodgui_api.models.session import Session
-from pyforms_gui.basewidget import BaseWidget
-from pyforms_gui.controls.control_list import ControlList
-from pyforms_gui.controls.control_text import ControlText
+from pybpodgui_api.exceptions.invalid_session import InvalidSessionError
 
 logger = logging.getLogger(__name__)
 
