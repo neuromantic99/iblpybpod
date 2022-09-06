@@ -199,7 +199,7 @@ class EmulatorGUI(BaseWidget):
         :param task: The Task to be used to update the information in the UI, if available.
         :return:
         """
-        self._selectedProtocol.value = task.name if task is not 0 else ''
+        self._selectedProtocol.value = task.name if task != 0 else ''
 
     def update_board(self, board):
         """
@@ -207,7 +207,7 @@ class EmulatorGUI(BaseWidget):
         :param board: The Board to be used to update the information in the UI, if available.
         :return:
         """
-        self._selectedBoard.value = board.name if board is not 0 else ''
+        self._selectedBoard.value = board.name if board != 0 else ''
 
     def __send_msg_btn_evt(self, btn=None, control_text=None):
         # get message from textbox
