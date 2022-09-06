@@ -1,16 +1,17 @@
-import pyforms
-import serial
-from pyforms.basewidget import BaseWidget
-from pyforms.controls import ControlText, ControlCheckBox, ControlNumber, ControlButton, ControlCombo
-from pyforms.controls import ControlMatplotlib
-from pybpod_rotaryencoder_module.module_api import RotaryEncoderModule
-from sca.formats import csv
 from datetime import datetime as datetime_now
-from confapp import conf
 
 from AnyQt import QtGui
 from AnyQt.QtCore import QTimer
 from AnyQt.QtWidgets import QFileDialog
+from confapp import conf
+from serial.tools.list_ports import comports
+
+import pyforms
+from pybpod_rotaryencoder_module.module_api import RotaryEncoderModule
+from pyforms.basewidget import BaseWidget
+from pyforms.controls import ControlMatplotlib
+from pyforms.controls import ControlText, ControlCheckBox, ControlNumber, ControlButton, ControlCombo
+from sca.formats import csv
 
 
 class RotaryEncoderModuleGUI(RotaryEncoderModule, BaseWidget):
@@ -91,7 +92,7 @@ class RotaryEncoderModuleGUI(RotaryEncoderModule, BaseWidget):
 
     def _fill_serial_ports(self):
         self._port.add_item('', '')
-        for n, port in enumerate(sorted(serial.tools.list_ports.comports()), 1):
+        for n, port in enumerate(sorted(comports()), 1):
             self._port.add_item("{device}".format(device=port.device), str(port.device))
 
     def __filename_changed_evt(self):

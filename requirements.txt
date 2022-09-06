@@ -1,18 +1,20 @@
 aenum
-markdown2
+AnyQt
+confapp
+# markdown2
 matplotlib
 numpy
-ONE-api
-# opencv-python
+# ONE-api
+# # opencv-python
 opencv-python==4.3.0.36  # locking down may just be necessary on dev box
-pydot
+# pydot
 PyOpenGL
 PyQt5
 PyQtWebEngine
 pyserial
 pyusb
-PyYAML
+# PyYAML
 QScintilla
-safe-and-collaborative-architecture
+# safe-and-collaborative-architecture
 scipy
 visvis
