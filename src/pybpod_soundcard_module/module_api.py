@@ -366,7 +366,7 @@ class SoundCardModule(object):
         # get number of commands to send
         sound_file_size_in_samples = len(wave_int8) // 4
         commands_to_send = int(sound_file_size_in_samples * 4 // 32768 + (
-            1 if ((sound_file_size_in_samples * 4) % 32768) is not 0 else 0))
+            1 if ((sound_file_size_in_samples * 4) % 32768) != 0 else 0))
 
         # Metadata command length: 'c' 'm' 'd' '0x80' + random + metadata  + 32768 + 2048 + 'f'
         metadata_cmd_header_size = 4 + int32_size + (4 * int32_size)
