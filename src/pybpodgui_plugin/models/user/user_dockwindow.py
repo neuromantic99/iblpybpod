@@ -30,7 +30,7 @@ class UserDockWindow(UserTreeNode):
 
     def close(self):
         self.mainWindow.details.value = None
-        super(UserDockWindow, self).close(silent)
+        super(UserDockWindow, self).close()
 
     @property
     def mainWindow(self):
