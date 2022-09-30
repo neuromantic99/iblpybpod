@@ -4,6 +4,7 @@ from sca.formats import json, csv
 from sca import format_flags as flags
 from sca.utils.send2trash_wrapper import send2trash
 
+
 class Repository(json.scadict):
 
     def __init__(self, path, data=None, uuid4_id=None, def_url=None, def_text=None, software=None, fileformat='json', parent=None):
@@ -158,7 +159,7 @@ class Repository(json.scadict):
 
         for child in self.children:
             if not child.updaterepo:
-                send2trash(child.path)
+                shutil.rmtree(child.path) if os.path.isdir(child.path) else os.remove(child.path)
                 self.children.remove(child)
 
         if self.parent is None: self.updaterepo = False

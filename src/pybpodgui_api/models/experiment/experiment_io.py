@@ -6,7 +6,6 @@ import os
 import shutil
 
 from pybpodgui_api.models.experiment.experiment_base import ExperimentBase
-from pybpodgui_api.utils.send2trash_wrapper import send2trash
 
 logger = logging.getLogger(__name__)
 
@@ -97,8 +96,7 @@ class ExperimentIO(ExperimentBase):
         setups_paths = [setup.path for setup in self.setups]
         for path in self.__list_all_setups_in_folder(experiment_path):
             if path not in setups_paths:
-                logger.debug("Sending directory [{0}] to trash".format(path))
-                send2trash(path)
+                shutil.rmtree(path) if os.path.isdir(path) else os.remove(path)
 
     def __generate_experiments_path(self, project_path):
         return os.path.join(project_path, 'experiments')
