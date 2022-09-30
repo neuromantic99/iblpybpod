@@ -4,8 +4,9 @@
 import os
 import logging
 import hashlib
+import shutil
+
 import pybpodgui_api
-from pybpodgui_api.utils.send2trash_wrapper import send2trash
 from sca.formats import json
 
 from pybpodgui_api.models.project.project_base import ProjectBase
@@ -184,7 +185,7 @@ class ProjectIO(ProjectBase):
             if nodename not in names:
                 nodepath = os.path.join(path, nodename)
                 if not os.path.isfile(nodepath):
-                    send2trash(nodepath)
+                    shutil.rmtree(nodepath)
 
     def is_saved(self):
         """

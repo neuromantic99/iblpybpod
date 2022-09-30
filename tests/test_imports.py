@@ -10,8 +10,5 @@ class TestImports(unittest.TestCase):
         import sca
         assert sca
 
-        import one
-        assert one
-
         import cv2
         assert cv2

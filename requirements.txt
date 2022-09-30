@@ -5,7 +5,7 @@ markdown2
 matplotlib
 numpy
 # ONE-api
-# # opencv-python
+# opencv-python
 opencv-python==4.3.0.36  # locking down may just be necessary on dev box
 pandas
 # pydot
