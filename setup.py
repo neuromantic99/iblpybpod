@@ -3,7 +3,7 @@ from pathlib import Path
 
 from setuptools import setup, find_packages
 
-IBLPYBPOD_CURRENT_VERSION = "1.8.2a3"
+IBLPYBPOD_CURRENT_VERSION = "2.0.0"
 CURRENT_DIRECTORY = Path(__file__).parent
 CURRENT_PYTHON_VERSION = sys.version_info[:2]
 REQUIRED_PYTHON_VERSION = (3, 8)
@@ -26,7 +26,6 @@ with open("requirements.txt") as f:
 
 setup(
     name='iblpybpod',
-    # version=get_version(Path("iblpybpod").joinpath("__init__.py")),
     version=IBLPYBPOD_CURRENT_VERSION,
     python_requires='>={}.{}'.format(*REQUIRED_PYTHON_VERSION),
     description='IBL implementation of pybpod software',

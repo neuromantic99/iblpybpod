@@ -1,22 +1,28 @@
+# **Release Notes**
 
-Changelog
-=========
-v1.8.2 (2020/02/10)
--------------------
+## **v2.0.0 (2022-10-04)**
+- first IBL release
+- flattened git submodule structure to a single module
+- removed a multitude of abandoned packages
+- mogrified all png files
+- simplified logging
+- python v3.8 support
+- modern pandas python package support 
+- github actions automated pypi package publishing
+
+## v1.8.2 (2020/02/10)
 - pybpod-gui-plugin (v1.8.2)
     - Changed 'Skip all trials' button to 'Stop'
     - Changed 'Stop trial' button to 'Skip trial'
 - pybpod-gui-plugin-emulator (v0.1.5)
     - Update button names
 
-v1.8.1 (2019/12/09)
--------------------
+## v1.8.1 (2019/12/09)
 - pybpod-api (v1.8.1)
     - Fixed global_timer output actions for GlobalTimerTrig
     - Fixed default send_events value on set_global_timer to 1 (as expected in the Bpod firmware)
 
-v1.8.0 (2019/11/09)
--------------------
+## v1.8.0 (2019/11/09)
 - PyBpod's version number is now shared between the main packages of PyBpod
   (pybpod, pybpod-api, pybpod-gui-api and pybpod-gui-plugin).
 - pybpod-api (v1.8.0)
@@ -40,24 +46,20 @@ v1.8.0 (2019/11/09)
     - Added libusb backend support
     - Increased timeout duration on read
 
-v1.7.8 (2019/06/03)
--------------------
+## v1.7.8 (2019/06/03)
 - Fixed a problem with the setup requirements
 
-v1.7.7 (2019/06/03)
--------------------
+## v1.7.7 (2019/06/03)
 - Fixed a problem with pybpod-gui-plugin-waveplayer.
 
-v1.7.6 (2019/06/03)
--------------------
+## v1.7.6 (2019/06/03)
 - Requirements for PyBpod now point to specific package versions to ease upgrades
 - pybpod-api (updated to v1.6.4)
     - Fixed problem with bad indexing when accessing modules in _bpodcom_module_write
 - pybpod-gui-plugin-waveplayer (v1.0)
     - Corrected version number in the package and PyPi
 
-v1.7.5 (2019/05/15)
--------------------
+## v1.7.5 (2019/05/15)
 - pybpod-gui-plugin (updated to v1.6.2)
     - Fixed png that was creating a warning on PyBpod initialization
     - Now it points correctly to the master branch
@@ -73,16 +75,13 @@ v1.7.5 (2019/05/15)
 - pybpod-soundcard-module (v0.1.5)
     - Added bumpversion support to this module
 
-v1.7.4 (2019/05/08)
--------------------
+## v1.7.4 (2019/05/08)
 - The pybpodgui_plugin_session_history is now pointing to the master branch as it should (v1.4.1)
 
-v1.7.3 (2019/05/08)
--------------------
+## v1.7.3 (2019/05/08)
 - Fixed problem with wrong pybpod-alyx-module version (now it is v1.1)
 
-v1.7.2 (2019/05/03)
--------------------
+## v1.7.2 (2019/05/03)
 - Python base version changed to v3.6.6
 - Conda environment files are now more coherent between Windows and Linux
 - pybpod-api (updated to v1.6.3)

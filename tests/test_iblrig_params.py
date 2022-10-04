@@ -1,5 +1,3 @@
-# Entry point for iblpybpod
-# /home/michele/Documents/repos/iblpybpod/src/pybpodgui_plugin/__main__.py
 import os
 import shutil
 from pathlib import Path
@@ -12,21 +10,17 @@ def create_setup(exp, setup_name: str, board: str, subj: object, task: str = Non
     # task name is defined as the experiment_name + '_' + setup_name
     # Create or get preexisting setup
     setup = exp.create_setup()
-
     setup.name = setup_name
     setup.task = task if isinstance(task, str) else exp.name + "_" + setup_name
     setup.board = board
     setup += subj
     setup.detached = True
-
     return setup
 
 
-def setup_iblpybpod_for_iblrig_params():
+def setup_iblpybpod_for_iblrig_params(iblrig_path: Path, iblrig_params_path: Path):
     # Set path vars
-    iblrig_path = Path("/home/michele/Documents/repos/iblrig")
     iblrig_tasks_path = iblrig_path / "tasks"
-    iblrig_params_path = Path("/home/michele/Documents/iblrig_params")  # IBLRIG_FOLDER.parent / "iblrig_params"
     iblrig_params_plugins_path = iblrig_params_path / "plugins"
     iblrig_params_project_path = iblrig_params_path / "IBL"
     iblrig_params_project_tasks_path = iblrig_params_project_path / "tasks"
@@ -80,7 +74,19 @@ def setup_iblpybpod_for_iblrig_params():
     # create ibl tasks
     task_names = [
         "_iblrig_calibration_screen",
-        "_iblrig_calibration_water"
+        "_iblrig_calibration_water",
+        "_iblrig_calibration_input_listner",
+        "_iblrig_calibration_frame2TTL",
+        "_iblrig_misc_flush_water",
+        "_iblrig_misc_bpod_ttl_test",
+        "_iblrig_misc_frame2TTL_freq_test",
+        "_iblrig_tasks_biasedChoiceWorld",
+        "_iblrig_tasks_habituationChoiceWorld",
+        "_iblrig_tasks_trainingChoiceWorld",
+        "_iblrig_tasks_ephysChoiceWorld",
+        "_iblrig_tasks_ephys_certification",
+        "_iblrig_tasks_passiveChoiceWorld",
+        "_iblrig_tasks_passiveChoiceWorldIndependent"
     ]
     for task_name in task_names:
         # create task
@@ -94,8 +100,6 @@ def setup_iblpybpod_for_iblrig_params():
         p.load(iblrig_params_project_path)
         task = p.find_task(task_name)
         task._commands = []
-        if task.name == "_iblrig_calibration_screen":
-            print("configuring task")
         p.save(str(iblrig_params_project_path))
 
     # create ibl experiments
@@ -169,6 +173,8 @@ def setup_iblpybpod_for_iblrig_params():
 
 
 if __name__ == "__main__":
-    setup_iblpybpod_for_iblrig_params()
-    os.chdir("/home/michele/Documents/iblrig_params/")
+    iblrig_path = Path.home() / "Documents" / "repos" / "iblrig"
+    iblrig_params_path = Path.home() / "Documents" / "iblrig_params"
+    setup_iblpybpod_for_iblrig_params(iblrig_path, iblrig_params_path)
+    os.chdir(iblrig_params_path)
     pybpod_start()
