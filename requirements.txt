@@ -4,7 +4,8 @@ confapp
 markdown2
 matplotlib
 numpy
-opencv-python==4.3.0.36  # locking down may just be necessary on dev box
+opencv-python; sys_platform == "win32"
+opencv-python==4.3.0.36; sys_platform != "win32"
 pandas
 PyOpenGL
 PyQt5
