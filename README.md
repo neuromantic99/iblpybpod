@@ -21,14 +21,6 @@ python -m pip install iblpybpod
 start-pybpod
 ```
 
-### Anaconda commands for setup
-```bash
-conda create --name iblpybpod python=3.8
-conda activate iblpybpod
-pip install iblpybpod
-start-pybpod
-```
-
 ---
 
 ## For developers
@@ -65,12 +57,4 @@ source iblpybpod-dev/bin/activate
 python -m pip install --upgrade pip wheel
 git clone https://github.com/int-brain-lab/iblpybpod
 python -m pip install --editable iblpybpod
-```
-
-### Anaconda commands for setup
-```bash
-conda create --name iblpybpod-dev python=3.8
-conda activate iblpybpod-dev
-git clone https://github.com/int-brain-lab/iblpybpod
-pip install --editable iblpybpod
 ```
