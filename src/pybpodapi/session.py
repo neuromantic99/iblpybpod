@@ -1,6 +1,3 @@
-# !/usr/bin/python3
-# -*- coding: utf-8 -*-
-
 import logging
 from confapp import conf
 from datetime import datetime as datetime_now
@@ -97,12 +94,6 @@ class Session(object):
         # stream data to a file.
         if path:
             streams += [open(path, "w")]
-
-        # stream data to the stdout.
-        if conf.PYBPOD_API_STREAM2STDOUT:
-            sys.stdout = StdoutBuffer(self)
-            sys.stderr = StderrBuffer(self)
-            streams += [self.ostdout]
 
         self.csvstream = StreamsWrapper(streams)
         self.csvwriter = csv.writer(
