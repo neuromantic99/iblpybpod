@@ -1,6 +1,10 @@
 # **Release Notes**
 
-## **v2.0.0 (2022-10-04)**
+## **v2.0.1 (2023-01-13)**
+- additional terminal logging removed
+- additional error messaging for soundcard module
+
+## v2.0.0 (2022-10-04)
 - first IBL release
 - flattened git submodule structure to a single module
 - removed a multitude of abandoned packages
