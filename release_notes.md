@@ -1,6 +1,6 @@
 # **Release Notes**
 
-## **v2.0.1 (2023-01-13)**
+## **v2.0.2 (2023-01-13)**
 - additional terminal logging removed
 - additional error messaging for soundcard module
 
