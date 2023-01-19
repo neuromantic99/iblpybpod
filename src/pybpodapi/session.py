@@ -75,8 +75,8 @@ class Session(object):
     INFO_TRIAL_BPODTIME = "TRIAL-BPOD-TIME"
 
     def __init__(self, path=None):
-        self.ostdout = sys.stdout
-        self.ostderr = sys.stderr
+        self.ostdout = None
+        self.ostderr = None
 
         # the variable will contain a list of streams where the session output
         # should be written.
@@ -114,9 +114,10 @@ class Session(object):
     def __del__(self):
 
         self.csvstream.close()
-
-        sys.stdout = self.ostdout
-        sys.stderr = self.ostderr
+        if self.ostdout is not None:
+            sys.stdout = self.ostdout
+        if self.ostderr is not None:
+            sys.stderr = self.ostderr
 
     def __add__(self, msg):
         """
