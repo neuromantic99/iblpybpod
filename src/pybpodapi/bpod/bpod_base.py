@@ -620,7 +620,7 @@ class BpodBase(object):
 
     @property
     def modules(self):
-        return [m for m in self.bpod_modules if m.connected]
+        return None if self.bpod_modules is None else [m for m in self.bpod_modules if m.connected]
 
     @property
     def skip_all_trials(self) -> bool:
