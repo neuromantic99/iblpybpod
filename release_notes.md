@@ -1,6 +1,10 @@
 # **Release Notes**
 
-## **v2.0.2 (2023-01-13)**
+## **v2.0.3 (2023-02-09)**
+- removed captures of stderr and stdout from pybpodapi
+- allow bpod to list modules without hardware physically being connected, for testing
+
+## v2.0.2 (2023-01-13)
 - additional terminal logging removed
 - additional error messaging for soundcard module
 
