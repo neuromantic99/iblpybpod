@@ -388,6 +388,8 @@ class BpodBase(object):
         :param int message_ID: Unique id for the message. Should be between 1 and 255
         :param list(int) serial_message: Message to send. The message should be bigger than 3 bytes.
         """
+        if serial_channel is None:
+            return
         response = self._bpodcom_load_serial_message(serial_channel, message_ID, serial_message, 1)
 
         if not response:

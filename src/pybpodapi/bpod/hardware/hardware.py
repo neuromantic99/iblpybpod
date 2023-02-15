@@ -21,16 +21,16 @@ class Hardware(object):
         self.outputs = None
         self.channels = None
 
-        self.max_states = None
-        self.max_serial_events = None
+        self.max_states = 500
+        self.max_serial_events = -1
 
         self.inputs_enabled = None
         self.cycle_period = None
 
-        self.n_global_timers = None
-        self.n_global_counters = None
-        self.n_conditions = None
-        self.n_uart_channels = None
+        self.n_global_timers = -1
+        self.n_global_counters = -1
+        self.n_conditions = -1
+        self.n_uart_channels = -1
 
         self.firmware_version = None
         self.machine_type = None

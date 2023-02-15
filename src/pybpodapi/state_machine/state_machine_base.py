@@ -49,7 +49,7 @@ class StateMachineBase(object):
         self.hardware = bpod.hardware  # type: Hardware
 
         self.state_names = []  # type: list(str)
-        self.state_timers = [0] * self.hardware.max_states  # list(float)
+        self.state_timers = [0] * self.hardware.max_states
         self.total_states_added = 0  # type: int
 
         # state change conditions
@@ -126,7 +126,7 @@ class StateMachineBase(object):
 
         for event_name, event_state_transition in state_change_conditions.items():
             try:
-                event_code = self.hardware.channels.event_names.index(event_name)
+                event_code = 0 if self.hardware.channels is None else self.hardware.channels.event_names.index(event_name)
                 logger.debug("Event code: %s", event_code)
             except:
                 raise SMAError(
@@ -215,9 +215,10 @@ class StateMachineBase(object):
 
             else:
                 try:
-                    output_code = self.hardware.channels.output_channel_names.index(
-                        action_name
-                    )
+                    if self.hardware.channels is None:
+                        output_code = -1
+                    else:
+                        self.hardware.channels.output_channel_names.index(action_name)
                 except:
                     raise SMAError(
                         "Error creating state: "
@@ -234,16 +235,12 @@ class StateMachineBase(object):
 
             # For backwards compatability, integers specifying global timers convert to equivalent binary decimals.
             # To specify binary, use a string of bits.
-            if (
-                output_code
-                == self.hardware.channels.events_positions.globalTimerTrigger
-            ):
-                self.global_timers.triggers_matrix[state_name_idx] = 2 ** (
-                    output_value - 1
-                )
+            if self.hardware.channels is not None:
+                if output_code == self.hardware.channels.events_positions.globalTimerTrigger:
+                    self.global_timers.triggers_matrix[state_name_idx] = 2 ** (output_value - 1)
 
-            if output_code == self.hardware.channels.events_positions.globalTimerCancel:
-                self.global_timers.cancels_matrix[output_value - 1] = 1
+                if output_code == self.hardware.channels.events_positions.globalTimerCancel:
+                    self.global_timers.cancels_matrix[output_value - 1] = 1
 
             self.output_matrix[state_name_idx].append((output_code, output_value))
 
