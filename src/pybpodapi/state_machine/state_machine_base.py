@@ -218,7 +218,7 @@ class StateMachineBase(object):
                     if self.hardware.channels is None:
                         output_code = -1
                     else:
-                        self.hardware.channels.output_channel_names.index(action_name)
+                        output_code = self.hardware.channels.output_channel_names.index(action_name)
                 except:
                     raise SMAError(
                         "Error creating state: "
