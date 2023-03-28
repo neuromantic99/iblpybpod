@@ -4,8 +4,7 @@ confapp
 markdown2
 matplotlib
 numpy
-opencv-python; sys_platform == "win32"
-opencv-python==4.3.0.36; sys_platform != "win32"
+opencv-python
 pandas
 PyOpenGL
 PyQt5
