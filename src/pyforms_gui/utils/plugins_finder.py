@@ -13,8 +13,8 @@ class PluginsFinder(object):
     Manage and find plugins at runtime
     """
 
-    def __init__(self, plugins=[]):
-        self._plugins = plugins
+    def __init__(self, plugins=None):
+        self._plugins = plugins if plugins is not None else []
 
     def __add__(self, other):
         self._plugins.append(other)

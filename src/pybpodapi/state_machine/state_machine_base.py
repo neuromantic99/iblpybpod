@@ -89,7 +89,7 @@ class StateMachineBase(object):
         self.is_running = False
 
     def add_state(
-        self, state_name, state_timer=0, state_change_conditions={}, output_actions=()
+        self, state_name, state_timer=0, state_change_conditions=None, output_actions=()
     ):
         """
         Adds a state to an existing state matrix.
@@ -110,6 +110,9 @@ class StateMachineBase(object):
                 output_actions=[('PWM1', 255)])
 
         """
+        if state_change_conditions is None:
+            state_change_conditions = {}
+
 
         # TODO: WHY DO WE NEED THIS IF-ELSE?
         if state_name not in self.manifest:

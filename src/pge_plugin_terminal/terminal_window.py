@@ -46,7 +46,11 @@ class TerminalWindow(BaseWidget):
 		self._exec_script_btn.value = self.open_and_run_script
 
 
-	def open_and_run_script(self, filepath=None, extra_args={}):
+	def open_and_run_script(self, filepath=None, extra_args=None):
+
+		if extra_args is None:
+			extra_args = {}
+
 		if not filepath:
 			filepath = QFileDialog.getOpenFileName(self, 'OpenFile')
 		if filepath:

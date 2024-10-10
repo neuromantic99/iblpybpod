@@ -247,7 +247,9 @@ class BaseWidget(QFrame):
         self.init_form()
         super(BaseWidget, self).show()
 
-    def save_form(self, data={}, path=None):
+    def save_form(self, data=None, path=None):
+        if data is None:
+            data = {}
         allparams = self.controls
 
         if hasattr(self, 'load_order'):

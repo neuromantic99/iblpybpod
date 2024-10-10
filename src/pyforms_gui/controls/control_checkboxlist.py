@@ -29,7 +29,9 @@ class ControlCheckBoxList(ControlBase):
 
 
 
-    def save_form(self, data={}, path=None):
+    def save_form(self, data=None, path=None):
+        if data is None:
+            data = {}
         results = []
 
         for row in range(self.count):

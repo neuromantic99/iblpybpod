@@ -150,7 +150,9 @@ class StandAloneContainer(QMainWindow):
         super().closeEvent(event)
         self._widget.closeEvent(event)
 
-    def __initMainMenu(self, options, keys={}):
+    def __initMainMenu(self, options, keys=None):
+        if keys is None:
+            keys = {}
         menubar = self.menuBar()
         for menuIndex, m in enumerate(options):
             for key, menus in m.items():

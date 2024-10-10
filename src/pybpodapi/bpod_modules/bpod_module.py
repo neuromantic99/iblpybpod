@@ -8,7 +8,7 @@ class BpodModule(object):
         connected=False,
         module_name="",
         firmware_version=0,
-        events_names=[],
+        events_names=None,
         n_serial_events=0,
         serial_port=None,
     ):
@@ -16,7 +16,7 @@ class BpodModule(object):
         self.serial_port = serial_port
         self.connected = connected
         self.firmware_version = firmware_version
-        self.event_names = events_names
+        self.event_names = events_names if events_names is not None else []
         self.n_serial_events = n_serial_events
 
         self.relay_active = False
